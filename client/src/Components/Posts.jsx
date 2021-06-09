@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const Posts = () => {
-    return (
-        <h1>
-            Posts
-        </h1>
-    )
-}
+  return (
+    <React.Fragment>
+      <h1 className="text-success">Posts</h1>
+    </React.Fragment>
+  );
+};
 
-export default Posts
+export default Posts;
