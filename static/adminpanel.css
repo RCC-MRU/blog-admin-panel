@@ -71,10 +71,9 @@ i{
     margin-bottom: 10px;
 }
 
-.content{
+.adminPanel{
     background-color: lightgray;
-    display: flex; 
-    justify-content:right;
+    display: flex;
 }
 
 .material-icons{
