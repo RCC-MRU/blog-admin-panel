@@ -4,8 +4,8 @@ const Comments = () => {
   return (
     <React.Fragment>
       <h1 className="text-info">Comments</h1>;
-      <div className="container">
-        <div class="top">
+      <div className="container col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="top col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <h1>Comments</h1>
           <p>
             All<span>(80)</span>|Highlighted<span>(25)</span>|Liked
@@ -13,8 +13,8 @@ const Comments = () => {
           </p>
         </div>
         <hr />
-        <div className="bottom">
-          <table style={{ width: "100%" }}>
+        <div className="bottom col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <table style="width:100%">
             <tr>
               <th>Author</th>
               <th>Comment</th>

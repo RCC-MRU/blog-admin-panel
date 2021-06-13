@@ -5,7 +5,7 @@ const Dashboard = () => {
   <React.Fragment>
   <h1 className="text-warning">Dashboard</h1>;
   <div className="adminPanel">
-    <div className="left">
+    <div className="left col-lg-4 col-md-5 col-sm-7 col-xs-4">
         <div className="head">
             <span className="material-icons">
                 grid_view
@@ -38,7 +38,7 @@ const Dashboard = () => {
         </div>
     </div>
 
-    <div className="right">
+    <div className="right col-lg-8 col-md-7 col-sm-5 col-xs-8">
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla ab quidem maxime doloribus aperiam itaque eum, illo odit alias at numquam tenetur repellendus accusamus sunt aspernatur, deleniti, quos quas tempora?
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptate, commodi fuga voluptatibus corrupti animi, sed expedita ratione rem sit odio, blanditiis quos molestiae. Asperiores repellat maiores assumenda nulla ad.Lorem, ipsum dolor sit amet consectetur adipisicing elit. In quae repudiandae vel optio corrupti sed obcaecati consectetur ex sint id tenetur eligendi qui, alias fuga ab vero eius iusto rem.   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita accusamus recusandae sit modi, temporibus ratione quo unde repellat dolores nobis, quaerat ducimus nemo nesciunt perferendis distinctio perspiciatis quas molestias velit.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla ab quidem maxime doloribus aperiam itaque eum, illo odit alias at numquam tenetur repellendus accusamus sunt aspernatur, deleniti, quos quas tempora?
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptate, commodi fuga voluptatibus corrupti animi, sed expedita ratione rem sit odio, blanditiis quos molestiae. Asperiores repellat maiores assumenda nulla ad.Lorem, ipsum dolor sit amet consectetur adipisicing elit. In quae repudiandae vel optio corrupti sed obcaecati consectetur ex sint id tenetur eligendi qui, alias fuga ab vero eius iusto rem.   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita accusamus recusandae sit modi, temporibus ratione quo unde repellat dolores nobis, quaerat ducimus nemo nesciunt perferendis distinctio perspiciatis quas molestias velit.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla ab quidem maxime doloribus aperiam itaque eum, illo odit alias at numquam tenetur repellendus accusamus sunt aspernatur, deleniti, quos quas tempora?
