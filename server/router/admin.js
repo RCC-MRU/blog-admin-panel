@@ -5,11 +5,9 @@ const db = require("../database/db");
 const Admin = require("../controller/adminController");
 
 //showAuthorPost
-
-router.get("/authorPost/:userId", Admin.showAuthorPost);
+router.route("/authorPost/:userId").get(Admin.showAuthorPost);
 
 //showPostComments
-
-router.get("/showPostComments/:userId",Admin.showPostComments);
+router.route("/showPostComments/:userId").get(Admin.showPostComments);
 
 module.exports = router;

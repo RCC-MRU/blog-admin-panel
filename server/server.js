@@ -25,17 +25,16 @@ db.connect((err) => {
 });
 
 // admin route
-const adminRouter = require("./routes/admin");
+const adminRouter = require("./router/admin");
 app.use("/admin", adminRouter);
 
-
 //root route
-app.use("*",(req,res) =>{
-    res.status(200);
-    res.send({
-        message: "this is the root route",
-    });
-    });
+app.use("*", (req, res) => {
+  res.status(200);
+  res.send({
+    message: "this is the root route",
+  });
+});
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);

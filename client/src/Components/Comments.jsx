@@ -14,7 +14,7 @@ const Comments = () => {
         </div>
         <hr />
         <div className="bottom col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <table style="width:100%">
+          <table style={{ width: "100%" }}>
             <tr>
               <th>Author</th>
               <th>Comment</th>
