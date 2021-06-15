@@ -11,6 +11,8 @@ import "./Styles/index.css";
 import "./Styles/DashboardComp.css";
 import "./Styles/footer.css";
 
+import "./Styles/posts.css";
+import "./Styles/Analytics.css";
 // import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
