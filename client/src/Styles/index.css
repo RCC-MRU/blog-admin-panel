@@ -1,106 +1,96 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+/* Font includes */
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("https://fonts.googleapis.com/css2?family=Nova+Cut&display=swap");
 
 /* ---------------Admin Panel css----------------- */
 
-.head{
+.head {
   background-color: lightgray;
   width: 287px;
-  height:50px;
-  display:flex;
+  height: 50px;
+  display: flex;
   flex-wrap: wrap;
 }
 
-i{
-  padding:15px 15px;
+i {
+  padding: 15px 15px;
 }
 
-.head h3{
-  padding-top:10px;
+.head h3 {
+  padding-top: 10px;
   margin-left: 20px;
 }
 
-.username h3{
+.username h3 {
   padding-left: 15px;
-  padding-top:15px;
+  padding-top: 15px;
   padding-bottom: 15px;
 }
 
-.dashboard{
-  text-align:left;
-  height:900px;
-  width:287px;
-  background-color:darkgray;
+.dashboard {
+  text-align: left;
+  height: 900px;
+  width: 287px;
+  background-color: darkgray;
 }
 
-.username{
-  display:flex;
-  padding:20px 20px;
-  font-size:22px;
+.username {
+  display: flex;
+  padding: 20px 20px;
+  font-size: 22px;
 }
 
-.li-1 ul{
+.li-1 ul {
   line-height: 50px;
   list-style-type: none;
   font-size: 21px;
 }
 
-.li-2 ul{
+.li-2 ul {
   line-height: 50px;
-  list-style-type:none;
+  list-style-type: none;
   padding-top: 250px;
   font-size: 21px;
-}   
+}
 
-.posts{
-  background-color:gray;
-  padding-left:20px;
+.posts {
+  background-color: gray;
+  padding-left: 20px;
   margin-bottom: 10px;
 }
 
-.analytics{
-  background-color:gray;
-  padding-left:20px;
+.analytics {
+  background-color: gray;
+  padding-left: 20px;
   margin-bottom: 10px;
 }
 
-.media{
-  background-color:gray;
-  padding-left:20px;
+.media {
+  background-color: gray;
+  padding-left: 20px;
   margin-bottom: 10px;
 }
 
-.comments{
-  background-color:gray;
-  padding-left:20px;
+.comments {
+  background-color: gray;
+  padding-left: 20px;
   margin-bottom: 10px;
 }
 
-.adminPanel{
+.adminPanel {
   background-color: lightgray;
   display: flex;
 }
 
-.material-icons{
-  padding-left:30px;
-  padding-bottom:20px;
-  padding-top:13px;
+.material-icons {
+  padding-left: 30px;
+  padding-bottom: 20px;
+  padding-top: 13px;
 }
 
 /* ----------------------Comments css-------------------- */
 
-.container{
+.container {
   border-radius: 5px;
   box-sizing: border-box;
   box-shadow: 9px 15px 4px 4px rgba(10, 10, 10, 0.5);
@@ -108,35 +98,37 @@ i{
   background-color: white;
 }
 
-body{
-  background-color: #D75959;
+/* body {
+  background-color: #d75959;
   box-sizing: border-box;
-  height:100%;
+  height: 100%;
   padding: 5%;
   margin: 5%;
-}
+} */
 
-table,th,td{
+table,
+th,
+td {
   border: 1px solid black;
   border-collapse: collapse;
-  margin:40px 60px;
-  padding:10px 10px;
+  margin: 40px 60px;
+  padding: 10px 10px;
 }
 
-span{
-  color:red;
+span {
+  color: red;
 }
 
-li{
-  color:blue;
+li {
+  color: blue;
 }
 
-.top{
+.top {
   padding-left: 5%;
-  padding-right:5%;
+  padding-right: 5%;
 }
 
-.bottom{
+.bottom {
   padding-left: 1%;
-  padding-right:10%;
+  padding-right: 10%;
 }

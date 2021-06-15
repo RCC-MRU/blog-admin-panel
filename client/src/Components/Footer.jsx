@@ -3,9 +3,14 @@ import React from "react";
 const Footer = () => {
   return (
     <React.Fragment>
-      <p className="text-center">
-        Copywright &copy;{new Date().getFullYear()} | Health &amp; Fitness
-      </p>
+      <footer id="footer">
+        <div className="copyrights">
+          <hr />
+          <p style={{ fontFamily: `Nova Cut, cursive` }}>
+            Copywright @{new Date().getFullYear()} | Health &amp; Fitness
+          </p>
+        </div>
+      </footer>
     </React.Fragment>
   );
 };

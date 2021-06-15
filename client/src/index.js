@@ -4,10 +4,12 @@ import ReactDOM from "react-dom";
 import App from "./App";
 
 // CSS import
-import "./Styles/index.css";
-import "./Styles/App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "font-awesome/css/font-awesome.min.css";
+
+import "./Styles/index.css";
+import "./Styles/DashboardComp.css";
+import "./Styles/footer.css";
 
 // import reportWebVitals from "./reportWebVitals";
 

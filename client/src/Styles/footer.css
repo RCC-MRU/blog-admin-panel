@@ -1,0 +1,17 @@
+
+#footer {
+  background-color: #000;
+  color: #fff;
+}
+
+.copyrights p {
+  text-align: center;
+  font-size: 16px;
+  margin: 0;
+  padding: 1rem 0;
+}
+
+.copyrights hr {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  margin: 0 3rem;
+}
