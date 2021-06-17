@@ -4,7 +4,7 @@
 
 /* ---------------Admin Panel css----------------- */
 
-.head {
+.head1 {
   background-color: lightgray;
   width: 287px;
   height: 50px;
@@ -98,13 +98,13 @@ i {
   background-color: white;
 }
 
-/* body {
+.comment{
   background-color: #d75959;
   box-sizing: border-box;
   height: 100%;
   padding: 5%;
   margin: 5%;
-} */
+}
 
 table,
 th,
@@ -119,16 +119,16 @@ span {
   color: red;
 }
 
-li {
+.author{
   color: blue;
 }
 
-.top {
+.top1 {
   padding-left: 5%;
   padding-right: 5%;
 }
 
-.bottom {
+.bottom1 {
   padding-left: 1%;
   padding-right: 10%;
 }

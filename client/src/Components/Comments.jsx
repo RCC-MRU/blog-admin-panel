@@ -3,9 +3,10 @@ import React from "react";
 const Comments = () => {
   return (
     <React.Fragment>
+      <div className="comment">
       <h1 className="text-info">Comments</h1>;
       <div className="container col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="top col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div clasName="top1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <h1>Comments</h1>
           <p>
             All<span>(80)</span>|Highlighted<span>(25)</span>|Liked
@@ -13,7 +14,7 @@ const Comments = () => {
           </p>
         </div>
         <hr />
-        <div className="bottom col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div className="bottom1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <table style={{ width: "100%" }}>
             <tr>
               <th>Author</th>
@@ -22,7 +23,7 @@ const Comments = () => {
             <tr>
               <td>
                 <ul>
-                  <li>Author</li>
+                  <li className="author">Author</li>
                 </ul>
                 author@gmail.com
                 <br />
@@ -40,7 +41,7 @@ const Comments = () => {
             <tr>
               <td>
                 <ul>
-                  <li>Author</li>
+                  <li className="author">Author</li>
                 </ul>
                 author@gmail.com
                 <br />
@@ -57,6 +58,7 @@ const Comments = () => {
             </tr>
           </table>
         </div>
+      </div>
       </div>
     </React.Fragment>
   );
