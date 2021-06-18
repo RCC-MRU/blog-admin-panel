@@ -10,7 +10,9 @@ const Dashboard = () => {
             <div className="col-md-3">
               <LeftPanel />
             </div>
-            <div className="col-md-9"></div>
+            <div className="col-md-9">
+              
+            </div>
           </div>
         </div>
       </div>

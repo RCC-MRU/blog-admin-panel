@@ -13,12 +13,11 @@ const LeftPanel = () => {
             alt="user profile"
             className="img-fluid user-profile-img"
           />
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-            quibusdam minus eligendi iusto aliquid eos cumque, voluptatum
-            necessitatibus quidem alias! Debitis natus non porro vero ipsum
-            quisquam eaque veniam reiciendis.
-          </p>
+        </section>
+        <section>
+          <div>Posts</div>
+          <div>Comments</div>
+          <div>Analytics</div>
         </section>
         <section>
           <div>
