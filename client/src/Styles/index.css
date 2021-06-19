@@ -12,9 +12,6 @@
   flex-wrap: wrap;
 }
 
-i {
-  padding: 15px 15px;
-}
 
 .head h3 {
   padding-top: 10px;
@@ -98,13 +95,13 @@ i {
   background-color: white;
 } */
 
-.comment{
-  background-color: #d75959;
+/* .comment{
+  background-color: ;
   box-sizing: border-box;
   height: 100%;
   padding: 5%;
   margin: 5%;
-}
+} */
 
 /* table,
 th,
@@ -114,10 +111,10 @@ td {
   margin: 40px 60px;
   padding: 10px 10px;
 } */
-
+/* 
 span {
   color: red;
-}
+} */
 
 .author{
   color: blue;
