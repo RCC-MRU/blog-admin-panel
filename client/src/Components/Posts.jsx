@@ -1,8 +1,16 @@
 import React from "react";
+import LeftPanel from "./DashboardComponents/LeftPanel";
+
 
 const Posts = () => {
   return (
     <React.Fragment>
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col-lg-2">
+            <LeftPanel/>
+        </div>
+        <div className="col-lg-10">
         <div classNameName="container my-5 ">
     <div className="row">
       <div className="col-lg-12  bg-white">
@@ -108,6 +116,11 @@ const Posts = () => {
       </div>
     </div>
   </div>
+        </div>
+      </div>
+    </div>
+
+      
     </React.Fragment>
   );
 };
