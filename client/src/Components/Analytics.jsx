@@ -5,7 +5,7 @@ import LeftPanel from "./DashboardComponents/LeftPanel";
 const Analytics = () => {
   return (
     <React.Fragment>
-       <div class="container back">
+       <div class="container my-4">
         <div class="row">
             <div class="col-lg-12 border my-5 bg-white text-dark">
                 <p><span class="material-icons ms-3 mt-3">
