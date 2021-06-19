@@ -11,7 +11,7 @@ const Posts = () => {
             <LeftPanel/>
         </div>
         <div className="col-lg-10">
-        <div classNameName="container my-5 ">
+        <div className="container my-5 ">
     <div className="row">
       <div className="col-lg-12  bg-white">
         <section className="mt-3 mb-4">

@@ -5,12 +5,12 @@ import LeftPanel from "./DashboardComponents/LeftPanel";
 const Analytics = () => {
   return (
     <React.Fragment>
-        <div classNameName="conatiner-fluid">
-            <div classNameName="row">
-                <div classNameName="col-lg-2">
+        <div className="conatiner-fluid">
+            <div className="row">
+                <div className="col-lg-2">
                     <LeftPanel/>
                 </div>
-                <div classNameName="col-lg-10 right">
+                <div className="col-lg-10 right">
                 <div className="container">
       <div >
       <div className="row">
