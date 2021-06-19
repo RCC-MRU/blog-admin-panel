@@ -90,13 +90,13 @@ i {
 
 /* ----------------------Comments css-------------------- */
 
-.container {
+/* .container {
   border-radius: 5px;
   box-sizing: border-box;
   box-shadow: 9px 15px 4px 4px rgba(10, 10, 10, 0.5);
   transform: translateX(-0.5%);
   background-color: white;
-}
+} */
 
 .comment{
   background-color: #d75959;
@@ -106,14 +106,14 @@ i {
   margin: 5%;
 }
 
-table,
+/* table,
 th,
 td {
   border: 1px solid black;
   border-collapse: collapse;
   margin: 40px 60px;
   padding: 10px 10px;
-}
+} */
 
 span {
   color: red;

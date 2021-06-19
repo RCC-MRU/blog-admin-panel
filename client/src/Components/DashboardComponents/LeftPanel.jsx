@@ -1,11 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const LeftPanel = () => {
+const LeftPanel = ({ activeTab, setActiveTab }) => {
+  const toggle = (tab) => {
+    if (activeTab !== tab) setActiveTab(tab);
+  };
+
   return (
     <React.Fragment>
       <main className="main-styling">
         <section>
-          <p>Username</p>
+          <h4>Sanchit</h4>
         </section>
         <section>
           <img
@@ -13,18 +18,35 @@ const LeftPanel = () => {
             alt="user profile"
             className="img-fluid user-profile-img"
           />
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-            quibusdam minus eligendi iusto aliquid eos cumque, voluptatum
-            necessitatibus quidem alias! Debitis natus non porro vero ipsum
-            quisquam eaque veniam reiciendis.
-          </p>
         </section>
         <section>
-          <div>
+          <Link
+            type="button"
+            className="btn btn-md left-middle-buttons"
+            onClick={() => toggle("1")}
+          >
+            Posts
+          </Link>
+          <Link
+            type="button"
+            className="btn btn-md left-middle-buttons"
+            onClick={() => toggle("2")}
+          >
+            Comments
+          </Link>
+          <Link
+            type="button"
+            className="btn btn-md left-middle-buttons"
+            onClick={() => toggle("3")}
+          >
+            Analytics
+          </Link>
+        </section>
+        <section>
+          <div className="left-bottom-buttons">
             <i className="fa fa-cog fa-lg"></i>Settings
           </div>
-          <div>
+          <div className="left-bottom-buttons">
             <i className="fa fa-sign-out fa-lg"></i>Logout
           </div>
         </section>
