@@ -9,8 +9,6 @@ import Comments from "./Comments";
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState("1");
 
-
-
   return (
     <Fragment>
       <div className="container-fluid">
@@ -25,10 +23,10 @@ const Dashboard = () => {
                   <Posts />
                 </TabPane>
                 <TabPane tabId="2">
-                  <Analytics />
+                  <Comments />
                 </TabPane>
                 <TabPane tabId="3">
-                  <Comments />
+                  <Analytics />
                 </TabPane>
               </TabContent>
             </div>
