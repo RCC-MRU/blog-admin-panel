@@ -1,30 +1,22 @@
-.right {
-    background-color: #D75959;
-    box-sizing: border-box;
-}
 
 
 .border {
-    border: 5px solid red;
-    background: #FFFFFF;
-    border-radius: 10px;
-    box-sizing: border-box;
-    box-shadow: 9px 15px 4px 4px rgba(10, 10, 10, 0.5);
-
+  border: 5px solid red;
+  background: #ffffff;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: 5px 9px 2px 2px rgba(10, 10, 10, 0.5);
 }
 
-
 #left {
-    border-right: 9px solid #D75959;
-    box-sizing: border-box;
-    border-radius: 5px;
-    box-shadow: -9px 15px 4px 4px rgba(10, 10, 10, 0.5);
- 
+  border-right: 2px solid #d75959;
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: -5px 9px 2px 2px rgba(10, 10, 10, 0.5);
 }
 
 #right {
-    box-sizing: border-box;
-    border-radius: 5px;
-    box-shadow: 9px 15px 4px 4px rgba(10, 10, 10, 0.5);
-
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: 5px 9px 2px 2px rgba(10, 10, 10, 0.5);
 }
