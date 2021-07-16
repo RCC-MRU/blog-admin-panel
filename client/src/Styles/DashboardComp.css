@@ -8,7 +8,7 @@
 
 .main-styling {
   border-right: 3px solid #000;
-  height: 88vh;
+  height: 92vh;
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -28,7 +28,7 @@
   border: 1px solid #991414;
   background-color: transparent;
   color: black;
-} 
+}
 
 .left-middle-buttons:hover {
   background-color: #991414;

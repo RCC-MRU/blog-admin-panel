@@ -1,11 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const LeftPanel = ({ activeTab, setActiveTab }) => {
-  const toggle = (tab) => {
-    if (activeTab !== tab) setActiveTab(tab);
-  };
-
+const LeftPanel = () => {
   return (
     <React.Fragment>
       <main className="main-styling">
@@ -23,21 +19,21 @@ const LeftPanel = ({ activeTab, setActiveTab }) => {
           <Link
             type="button"
             className="btn btn-md left-middle-buttons"
-            onClick={() => toggle("1")}
+            to="/posts"
           >
             Posts
           </Link>
           <Link
             type="button"
             className="btn btn-md left-middle-buttons"
-            onClick={() => toggle("2")}
+            to="/comments"
           >
             Comments
           </Link>
           <Link
             type="button"
             className="btn btn-md left-middle-buttons"
-            onClick={() => toggle("3")}
+            to="/analytics"
           >
             Analytics
           </Link>
