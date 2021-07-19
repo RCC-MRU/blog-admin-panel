@@ -38,7 +38,7 @@ function App() {
           </Layout>
         </Route>
         <Route>
-          <Redirect to="/" />
+          <Redirect to="/posts" />
         </Route>
       </Switch>
       <Footer />
