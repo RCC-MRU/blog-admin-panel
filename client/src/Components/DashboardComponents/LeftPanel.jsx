@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+const list = [
+  { data: "Posts", link: "/posts" },
+  { data: "Comments", link: "/comments" },
+  { data: "Analytics", link: "/analytics" },
+];
 
 const LeftPanel = () => {
+  const [value, setValue] = useState(0);
   return (
     <React.Fragment>
       <main className="main-styling">
@@ -16,27 +22,21 @@ const LeftPanel = () => {
           />
         </section>
         <section>
-          <Link
-            type="button"
-            className="btn btn-md left-middle-buttons"
-            to="/posts"
-          >
-            Posts
-          </Link>
-          <Link
-            type="button"
-            className="btn btn-md left-middle-buttons"
-            to="/comments"
-          >
-            Comments
-          </Link>
-          <Link
-            type="button"
-            className="btn btn-md left-middle-buttons"
-            to="/analytics"
-          >
-            Analytics
-          </Link>
+          {list.map((detail, index) => (
+            <Link
+              onClick={() => {
+                setValue(index);
+              }}
+              key={index}
+              className={`btn btn-md left-middle-buttons ${
+                index === value && `isActive`
+              }`}
+              activeClassName="isActive"
+              to={detail.link}
+            >
+              {detail.data}
+            </Link>
+          ))}
         </section>
         <section>
           <div className="left-bottom-buttons">
