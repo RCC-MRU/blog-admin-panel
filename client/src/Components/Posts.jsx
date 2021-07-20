@@ -8,10 +8,12 @@ const Posts = () => {
         <section className="my-4">
           <section className="table-header-flex">
             <h3>Posts </h3>
-            <h5>
-              <i class="fa fa-plus-circle"></i>
+            <button className=" postbutton">
+            <h5 className="my-2 mx-2">
+              <i class="fa fa-plus-circle me-2"></i>
               New Post
             </h5>
+            </button>
           </section>
           <Table hover className="table-grid">
             <thead>
