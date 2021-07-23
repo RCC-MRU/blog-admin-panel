@@ -28,14 +28,16 @@
 .left-middle-buttons {
   width: 100%;
   margin: 10px 0;
-  border: 2px dotted black;
+  border: 2px dotted #991414;
   color: black;
 }
+
 
 .left-middle-buttons:hover {
   background-color: black;
   color: white !important;
 }
+
 
 .left-middle-buttons:focus {
   outline: none;
@@ -77,8 +79,8 @@ color: #991414;
 }
 
 .cont{
-  box-shadow:  0 0 10px  rgba(0,0,0,0.6);
-  -moz-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
-  -webkit-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
-  -o-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
+  box-shadow:  0 0 13px  rgba(0,0,0,0.6);
+  -moz-box-shadow: 0 0 13px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: 0 0 13px  rgba(0,0,0,0.6);
+  -o-box-shadow: 0 0 13px  rgba(0,0,0,0.6);
 }
