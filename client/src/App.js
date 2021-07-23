@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
     <>
       <div className="d-flex">
         <LeftPanel />
-        <Container fluid>{children}</Container>
+        {/* <Container fluid>{children}</Container> */}
       </div>
     </>
   );
@@ -20,27 +20,31 @@ const Layout = ({ children }) => {
 
 function App() {
   return (
-    <>
-      <Switch>
-        <Route exact path="/posts">
-          <Layout>
-            <Posts />
-          </Layout>
-        </Route>
-        <Route exact path="/analytics">
-          <Layout>
-            <Analytics />
-          </Layout>
-        </Route>
-        <Route exact path="/comments">
-          <Layout>
-            <Comments />
-          </Layout>
-        </Route>
-        <Route>
-          <Redirect to="/posts" />
-        </Route>
-      </Switch>
+    < >
+      <div className="container-fluid back">
+        <div className="row">
+          <div className="col-3 bg-white my-3 ms-5 me-1 cont ">
+            <Layout />
+          </div>
+          <div className="col-8 bg-white my-3 ps-3 ms-4 me-4 cont">
+            <Switch>
+              <Route exact path="/posts">
+                <Posts />
+              </Route>
+              <Route exact path="/analytics">
+                <Analytics />
+              </Route>
+              <Route exact path="/comments">
+                <Comments />
+              </Route>
+              <Route>
+                <Redirect to="/posts" />
+              </Route>
+            </Switch>
+          </div>
+        </div>
+      </div>
+
       <Footer />
     </>
   );
