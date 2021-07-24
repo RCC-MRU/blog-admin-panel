@@ -5,28 +5,17 @@ import { Redirect, Switch, Route } from "react-router-dom";
 
 import Footer from "./Components/Footer";
 import LeftPanel from "./Components/DashboardComponents/LeftPanel";
-import { Container } from "reactstrap";
-
-const Layout = ({ children }) => {
-  return (
-    <>
-      <div className="d-flex">
-        <LeftPanel />
-        {/* <Container fluid>{children}</Container> */}
-      </div>
-    </>
-  );
-};
 
 function App() {
   return (
-    < >
-      <div className="container-fluid back">
+    <>
+      <div className="container-fluid" style={{ width: '95%' }}>
         <div className="row">
-          <div className="col-3 bg-white my-3 ms-5 me-1 cont ">
-            <Layout />
+          <div className="col-md-2 bg-white my-4 cont h-100">
+            <LeftPanel />
           </div>
-          <div className="col-8 bg-white my-3 ps-3 ms-4 me-4 cont">
+          <div className="col-md-1 d-none d-md-block p-0"></div>
+          <div className="col-md-9 bg-white my-4 cont">
             <Switch>
               <Route exact path="/posts">
                 <Posts />
