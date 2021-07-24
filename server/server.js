@@ -1,11 +1,14 @@
+// Declaration of production environment
+if (process.env.NODE_ENV !== "production") {
+  // For Environment variables
+  const dotenv = require("dotenv");
+  dotenv.config();
+}
+
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const cors = require("cors");
-
-// For Environment variables
-const dotenv = require("dotenv");
-dotenv.config();
 
 const port = process.env.PORT || 3000;
 
@@ -35,6 +38,9 @@ app.use("*", (req, res) => {
     message: "this is the root route",
   });
 });
+
+// console.log("port", port);
+// console.log("process.env.PORT", process.env.PORT);
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
