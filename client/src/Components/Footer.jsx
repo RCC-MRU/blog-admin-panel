@@ -5,7 +5,6 @@ const Footer = () => {
     <React.Fragment>
       <footer id="footer">
         <div className="copyrights">
-          <hr />
           <p style={{ fontFamily: `Nova Cut, cursive` }}>
             Copywright @{new Date().getFullYear()} | Health &amp; Fitness
           </p>
