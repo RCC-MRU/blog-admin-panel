@@ -15,7 +15,7 @@ const Posts = () => {
             </h5>
             </button>
           </section>
-          <Table hover className="table-grid">
+          <Table hover className="table-grid table-light">
             <thead>
               <tr>
                 <th>#</th>
@@ -47,6 +47,13 @@ const Posts = () => {
                 <td>@twitter</td>
                 <td>@twitter</td>
               </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+                <td>@twitter</td>
+              </tr>         
             </tbody>
           </Table>
         </section>

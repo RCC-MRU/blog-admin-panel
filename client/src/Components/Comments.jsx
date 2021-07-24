@@ -15,7 +15,7 @@ const Comments = () => {
           
           </div>
           <hr />
-          <div className="bottom1 ">
+          <div className="bottom1">
             <table style={{ width: "100%" }}>
               <tr>
                 <th>Author</th>
