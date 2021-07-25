@@ -8,18 +8,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "font-awesome/css/font-awesome.min.css";
 
 import "./Styles/index.css";
-import "./Styles/DashboardComp.css";
+import "./Styles/dashboardComp.css";
 import "./Styles/footer.css";
-
+import "./Styles/comments.css";
 import "./Styles/posts.css";
-import "./Styles/Analytics.css";
+import "./Styles/analytics.css";
+
 import { BrowserRouter } from "react-router-dom";
 // import reportWebVitals from "./reportWebVitals";
 
-
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter >
+    <BrowserRouter>
       <App />
     </BrowserRouter>
   </React.StrictMode>,
