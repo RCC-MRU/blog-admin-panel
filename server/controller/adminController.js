@@ -29,4 +29,21 @@ module.exports = {
     });
     console.log(query.sql);
   },
+
+ 
+//Create new post
+ NewPost: async function (req, res) {
+   let CreatePost = req.body;
+   let sql = `INSERT INTO blog SET ?`;
+   
+   const query = db. query(sql, CreatePost, (err,results)=>
+   {
+     if (err) throw err;
+     res.status(200).json({
+       message: "New Post created",
+       result: results,
+     });
+   });
+ console.log(query.sql);
+  },
 };
