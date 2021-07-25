@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 const list = [
-  { data: "Posts", link: "/posts", icon: "fa fa-thumb-tack me-2" },
-  { data: "Comments", link: "/comments", icon: "fa fa-comment me-2 " },
-  { data: "Analytics", link: "/analytics", icon: "fa fa-signal me-2 " },
+  { data: "Home", link: "/", icon: "fa fa-home" },
+  { data: "Posts", link: "/posts", icon: "fa fa-thumb-tack" },
+  { data: "Comments", link: "/comments", icon: "fa fa-comment " },
+  { data: "Analytics", link: "/analytics", icon: "fa fa-signal " },
 ];
 
 const LeftPanel = () => {
@@ -57,8 +58,7 @@ const LeftPanel = () => {
               // activeClassName="isActive"
               to={detail.link}
             >
-              <i className={detail.icon}></i>
-              {detail.data}
+              <i className={detail.icon}></i>&nbsp;{detail.data}
             </Link>
           ))}
         </section>
