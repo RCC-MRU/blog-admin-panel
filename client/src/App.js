@@ -7,6 +7,7 @@ import { Redirect, Switch, Route } from "react-router-dom";
 
 import Footer from "./Components/Footer";
 import LeftPanel from "./Components/DashboardComponents/LeftPanel";
+import Login from "./Components/Login/Login";
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
           {/* <div className="col-md-1 d-none d-md-block p-0"></div> */}
           <div className="col-md-10 bg-white my-4 cont">
             <Switch>
+              <Route exact path="/login">
+                <Login />
+              </Route>
               <Route exact path="/">
                 <Home />
               </Route>
