@@ -1,9 +1,5 @@
-// Declaration of production environment
-if (process.env.NODE_ENV !== "production") {
-  // For Environment variables
-  const dotenv = require("dotenv");
-  dotenv.config();
-}
+const dotenv = require("dotenv");
+dotenv.config();
 
 const express = require("express");
 const app = express();
@@ -28,7 +24,7 @@ db.connect((err) => {
 });
 
 // admin route
-const adminRouter = require("./router/admin");
+const adminRouter = require("./routes/admin");
 app.use("/admin", adminRouter);
 
 //root route
