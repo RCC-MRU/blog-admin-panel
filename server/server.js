@@ -25,7 +25,16 @@ db.connect((err) => {
 
 // admin route
 const adminRouter = require("./routes/admin");
-app.use("/admin", adminRouter);
+app.use("/dashboard", adminRouter);
+
+const userRouter = require("./routes/user");
+app.use("/admin", userRouter);
+
+
+// const tk = require("./middleware/token");
+// app.get("/", tk.jwtVerification, (req, res) => {
+//   res.send("lorem")
+// })
 
 //root route
 app.use("*", (req, res) => {
