@@ -3,13 +3,15 @@ const router = express.Router();
 
 const Admin = require("../controller/adminController");
 
+const middlewares = require("../middleware/token");
+
 //showAuthorPost
-router.route("/authorPost/:userId").get(Admin.showAuthorPost);
+router.get("/posts", middlewares.jwtVerification, Admin.showAuthorPost);
 
 //showPostComments
-router.route("/showPostComments/:userId").get(Admin.showPostComments);
+router.get("/showPostComments", middlewares.jwtVerification, Admin.showPostComments);
 
 //newPostCreated
-router.route("/Newpost").post(Admin.NewPost);
+router.post("/newpost", middlewares.jwtVerification, Admin.NewPost);
 
 module.exports = router;

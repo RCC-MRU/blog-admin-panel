@@ -4,7 +4,7 @@ const db = require("../database/db");
 //show Author Posts
 module.exports = {
   showAuthorPost: async function (req, res) {
-    let sql = `Select * FROM blog WHERE userId ='${req.params.userId}'`;
+    let sql = `Select * FROM blog WHERE userId ='${req.result.userId}'`;
 
     const query = db.query(sql, (err, result) => {
       if (err) throw err;
@@ -18,7 +18,7 @@ module.exports = {
 
   //show comments on author post
   showPostComments: async function (req, res) {
-    let sql = `SELECT * FROM comments Where userId ='${req.params.userId}'`;
+    let sql = `SELECT * FROM comments Where userId ='${req.result.userId}'`;
 
     const query = db.query(sql, (err, result) => {
       if (err) throw err;
