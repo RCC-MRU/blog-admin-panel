@@ -21,10 +21,10 @@ const Layout = ({ children }) => {
     <>
       <div className="container-fluid" style={{ width: "98%" }}>
         <div className="row-wrapper d-flex">
-          <div className="col-md-2  sticky-bar bg-white my-4 cont h-100">
+          <div className="col-md-2 sticky-bar bg-white my-4 cont h-100">
             <LeftPanel />
           </div>
-          <div className="mx-2 "></div>
+          <div className="mx-2"></div>
           <div className="col-md-10 bg-white my-4 cont">
             <Container fluid>{children}</Container>
           </div>
@@ -41,19 +41,22 @@ function App() {
     name: nameLocal,
     token: tokenLocal,
   });
+
   const history = useHistory();
+
   useEffect(() => {
-    if (user?.token) {
-      history.push("/login");
+    if (!user?.token) {
+      history.push("/");
     }
   }, [user?.token, history]);
+
   return (
     <BlogContext.Provider value={{ user, setUser }}>
       <Switch>
-        <Route exact path="/login">
+        <Route exact path="/">
           <Login />
         </Route>
-        <Route exact path="/">
+        <Route exact path="/dashboard">
           <Layout>
             <Home />
           </Layout>

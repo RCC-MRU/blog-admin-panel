@@ -1,14 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { BlogContext } from '../../Context/BlogContext';
+
 const list = [
-  { data: "Home", link: "/", icon: "fa fa-home" },
+  { data: "Home", link: "/dashboard", icon: "fa fa-home" },
   { data: "Posts", link: "/posts", icon: "fa fa-thumb-tack" },
   { data: "Comments", link: "/comments", icon: "fa fa-comment " },
   { data: "Analytics", link: "/analytics", icon: "fa fa-signal " },
 ];
 
+
 const LeftPanel = () => {
   const [value, setValue] = useState(0);
+
+  const context = useContext(BlogContext);
+
+  const logout = () => {
+    context.setUser(null);
+    window.sessionStorage.removeItem("token")
+    window.sessionStorage.removeItem("email")
+    window.sessionStorage.removeItem("name")
+  }
+
   return (
     <React.Fragment>
       <main className="main-styling">
@@ -32,7 +45,7 @@ const LeftPanel = () => {
             />
           </figure>
           <h4 className="my-2">
-            <i className="fa fa-user-o"></i>&nbsp;Sanchit
+            <i className="fa fa-user-o"></i>&nbsp; {context.user?.name}
           </h4>
           <a
             href="https://blog-project-react.vercel.app/home"
@@ -66,7 +79,7 @@ const LeftPanel = () => {
           <div className="left-bottom-buttons fs-5 font-weight-bolder m-2">
             <i className="fa fa-cog fa-lg me-2"></i> Settings
           </div>
-          <div className="left-bottom-buttons fs-5 font-weight-bolder m-2">
+          <div className="left-bottom-buttons fs-5 font-weight-bolder m-2" onClick={logout}>
             <i className="fa fa-sign-out fa-lg me-2"></i> Logout
           </div>
         </section>

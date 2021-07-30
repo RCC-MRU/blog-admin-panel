@@ -25,7 +25,7 @@ db.connect((err) => {
 
 // admin route
 const adminRouter = require("./routes/admin");
-app.use("/dashboard", adminRouter);
+app.use("/", adminRouter);
 
 const userRouter = require("./routes/user");
 app.use("/admin", userRouter);
