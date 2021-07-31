@@ -46,17 +46,7 @@ const Posts = () => {
               </tr>
             </thead>
             <tbody>
-              {/* {posts.blogs &&
-                posts.blogs.map((item) => (
-                  <tr key={item.id}>
-                    <td>{item.id}</td>
-                    <td>{item.title}</td>
-                    <td>{item.body}</td>
-                    <td>{item.title}</td>
-                    <td>{item.title}</td>
-                  </tr>
-                ))} */}
-              {posts.map((item, i) => {
+               {posts.map((item, i) => {
                 return (
                   <tr key={item.blogId}>
                     <td>{i + 1}</td>
