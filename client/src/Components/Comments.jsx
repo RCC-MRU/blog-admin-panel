@@ -5,14 +5,13 @@ const Comments = () => {
     <React.Fragment>
       <div className="comment">
         <div className="container my-4">
-          <div clasName="top1 ">
+          <div className="top1 ">
             <h1>Comments</h1>
             <div>
-              <span className="px-2"> All (80)</span> 
+              <span className="px-2"> All (80)</span>
               <span className="px-2"> Highlightd (25)</span>
               <span className="px-2"> Liked (10)</span>
             </div>
-          
           </div>
           <hr />
           <div className="bottom1">

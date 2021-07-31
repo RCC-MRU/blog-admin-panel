@@ -1,12 +1,11 @@
 import React from "react";
-// import { CKEditor } from "@ckeditor/ckeditor5-react";
-// import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 const Analytics = () => {
   return (
     <React.Fragment>
-      *{" "}
-      <div className="container my-4 ">
+      {/* <div className="container my-4 ">
         <div className="row">
           <div className="col-lg-12 border my-5 bg-white text-dark">
             <p>
@@ -46,8 +45,9 @@ const Analytics = () => {
             </p>
           </div>
         </div>
-      </div>
-      {/* <CKEditor editor={ClassicEditor} /> */}
+      </div> */}
+
+      <CKEditor editor={ClassicEditor} />
     </React.Fragment>
   );
 };
