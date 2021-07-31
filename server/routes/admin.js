@@ -14,4 +14,7 @@ router.get("/showPostComments", middlewares.jwtVerification, Admin.showPostComme
 //newPostCreated
 router.post("/newpost", middlewares.jwtVerification, Admin.NewPost);
 
+//Delete Comment
+router.get("/deleteComments/:id", middlewares.jwtVerification, Admin.deletePostComments);
+
 module.exports = router;

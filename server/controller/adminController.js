@@ -44,4 +44,35 @@ module.exports = {
     });
     console.log(query.sql);
   },
+
+  deletePostComments: async function (req, res) {
+    let sql = `SELECT * FROM comments Where commentId ='${req.params.id}'`;
+    const query = db.query(sql, (err, result) => {
+      if (err) throw err;
+      const count = result.length
+
+      if(count == 0){
+        res.status(204).json({
+          message: "No Such comment found."
+        })
+      }
+      else if(count == 1){
+        if(req.result.userId == result[0].userid){
+          const del = db.query(`DELETE * FROM comments WHERE commentId ='${req.params.id}'`, (err1, result1) => {
+            
+            if (err1) throw err1;
+            res.status(200).json({
+              message: "Comment Deleted.",
+            });
+          })
+        }
+        else{
+          res.status(203).json({
+            message: "Not Authorized"
+          })
+        }
+      }
+    });
+    console.log(query.sql);
+  },
 };
