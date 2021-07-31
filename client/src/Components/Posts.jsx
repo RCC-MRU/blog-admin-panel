@@ -19,7 +19,7 @@ const Posts = () => {
       },
     }).then((data) => {
       setPosts(data.data.result);
-      console.log(data.data.result);
+      // console.log(data.data.result);
     });
   }, [context.user?.token]);
 
@@ -48,13 +48,15 @@ const Posts = () => {
             <tbody>
                {posts.map((item, i) => {
                 return (
-                  <tr key={item.blogId}>
-                    <td>{i + 1}</td>
-                    <td>{item.blogTitle}</td>
-                    <td>{item.userId}</td>
-                    <td>{item.category}</td>
-                    <td>{new Date(item.createdAt).toLocaleDateString()}</td>
-                  </tr>
+                  <React.Fragment key={item.blogId}>
+                    <tr>
+                      <td>{i + 1}</td>
+                      <td>{item.blogTitle}</td>
+                      <td>{item.userId}</td>
+                      <td>{item.category}</td>
+                      <td>{new Date(item.createdAt).toLocaleDateString()}</td>
+                    </tr>
+                  </React.Fragment>
                 );
               })}
             </tbody>
