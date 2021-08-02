@@ -55,6 +55,7 @@ const Posts = () => {
                       <td>{item.userId}</td>
                       <td>{item.category}</td>
                       <td>{new Date(item.createdAt).toLocaleDateString()}</td>
+                      <td><i class="fa fa-trash-o btn blogbutton font-weight-bolder"></i></td>
                     </tr>
                   </React.Fragment>
                 );
