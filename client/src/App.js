@@ -45,18 +45,18 @@ function App() {
   const history = useHistory();
 
   useEffect(() => {
-    if (user?.token) {
-      history.push("/");
+    if (!user?.token) {
+      history.push("/login");
     }
   }, [user?.token, history]);
 
   return (
     <BlogContext.Provider value={{ user, setUser }}>
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/login">
           <Login />
         </Route>
-        <Route exact path="/dashboard">
+        <Route exact path="/">
           <Layout>
             <Home />
           </Layout>
