@@ -11,6 +11,8 @@ import Login from "./Components/Login/Login";
 import { Container } from "reactstrap";
 import { BlogContext } from "./Context/BlogContext";
 
+import { ToastContainer } from "react-toastify";
+
 //local storage items
 const emailLocal = sessionStorage.getItem("email");
 const tokenLocal = sessionStorage.getItem("token");
@@ -51,36 +53,39 @@ function App() {
   }, [user?.token, history]);
 
   return (
-    <BlogContext.Provider value={{ user, setUser }}>
-      <Switch>
-        <Route exact path="/">
-          <Login />
-        </Route>
-        <Route exact path="/dashboard">
-          <Layout>
-            <Home />
-          </Layout>
-        </Route>
-        <Route exact path="/posts">
-          <Layout>
-            <Posts />
-          </Layout>
-        </Route>
-        <Route exact path="/analytics">
-          <Layout>
-            <Analytics />
-          </Layout>
-        </Route>
-        <Route exact path="/comments">
-          <Layout>
-            <Comments />
-          </Layout>
-        </Route>
-        <Route>
-          <Redirect to="/" />
-        </Route>
-      </Switch>
-    </BlogContext.Provider>
+    <React.Fragment>
+      <ToastContainer />
+      <BlogContext.Provider value={{ user, setUser }}>
+        <Switch>
+          <Route exact path="/">
+            <Login />
+          </Route>
+          <Route exact path="/dashboard">
+            <Layout>
+              <Home />
+            </Layout>
+          </Route>
+          <Route exact path="/posts">
+            <Layout>
+              <Posts />
+            </Layout>
+          </Route>
+          <Route exact path="/analytics">
+            <Layout>
+              <Analytics />
+            </Layout>
+          </Route>
+          <Route exact path="/comments">
+            <Layout>
+              <Comments />
+            </Layout>
+          </Route>
+          <Route>
+            <Redirect to="/dashboard" />
+          </Route>
+        </Switch>
+      </BlogContext.Provider>
+    </React.Fragment>
   );
 }
 
