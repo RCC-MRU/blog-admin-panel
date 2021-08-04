@@ -32,6 +32,7 @@
       "react-app/jest"
     ]
   },
+  "git": "https://github.com/Sanchitbajaj02/blog-admin-panel",
   "browserslist": {
     "production": [
       ">0.2%",
