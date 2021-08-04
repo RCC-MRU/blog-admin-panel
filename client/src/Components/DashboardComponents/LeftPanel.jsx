@@ -48,7 +48,7 @@ const LeftPanel = () => {
             <i className="fa fa-user-o"></i>&nbsp; {context.user?.name}
           </h4>
           <a
-            href="https://blog-project-react.vercel.app/home"
+            href="https://rcc-blog.netlify.app"
             rel="noreferrer"
             className="btn blogbutton font-weight-bolder my-2"
             target="_blank"
