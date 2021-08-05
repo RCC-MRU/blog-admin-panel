@@ -14,4 +14,10 @@ router.get("/showPostComments", middlewares.jwtVerification, Admin.showPostComme
 //newPostCreated
 router.post("/newpost", middlewares.jwtVerification, Admin.NewPost);
 
+//DeletePost
+router.delete("/DeletePost/:blogId", Admin.DeletePost);
+
+// Show Blog Title using BlogId
+router.get("/BlogTitle/:blogId", Admin.BlogTitle);
+
 module.exports = router;
