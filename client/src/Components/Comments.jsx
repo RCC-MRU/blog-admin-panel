@@ -55,9 +55,9 @@ const Comments = () => {
                     <td>{item.comment}</td>
                     <td>{new Date(item.createdAt).toLocaleDateString()}</td>
                     <td>
-                      <i class="fa fa-eye btn option-btn font-weight-bolder mx-1"></i>
-                      <i class="fa fa-pencil btn option-btn font-weight-bolder mx-1"></i>
-                      <i class="fa fa-trash-o btn option-btn font-weight-bolder mx-1"></i>
+                      <i className="fa fa-eye btn option-btn font-weight-bolder mx-1"></i>
+                      <i className="fa fa-pencil btn option-btn font-weight-bolder mx-1"></i>
+                      <i className="fa fa-trash-o btn option-btn font-weight-bolder mx-1"></i>
                     </td>
                   </tr>
                 );
