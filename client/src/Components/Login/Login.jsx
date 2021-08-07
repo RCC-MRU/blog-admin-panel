@@ -1,11 +1,15 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./Login.css";
 import { BlogContext } from "../../Context/BlogContext";
 import { userLogin } from "../../Util/axios";
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Login = () => {
   let context = useContext(BlogContext);
+  const history = useHistory();
 
   let [login, setLogin] = useState({
     email: "",
@@ -26,7 +30,7 @@ const Login = () => {
     userLogin(login)
       .then((data) => {
         console.log(data);
-        // toast(data.data.message, { type: "success" });
+        toast(data.data.message, { type: "success" });
 
         // alert();
         context.setUser({
@@ -37,11 +41,11 @@ const Login = () => {
         window.sessionStorage.setItem("email", data.data.email);
         window.sessionStorage.setItem("name", data.data.firstName);
         window.sessionStorage.setItem("token", data.data.token);
-        window.location.href = "/dashboard";
-        console.log("success")
+        history.push("/dashboard");
+        console.log("success");
       })
       .catch((error) => {
-        // toast(error.message, { type: "error" });
+        toast(error.message, { type: "error" });
         console.error(error);
       });
   };

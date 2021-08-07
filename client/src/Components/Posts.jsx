@@ -35,7 +35,7 @@ const Posts = () => {
           </button>
         </header>
         <section style={{ overflowX: "hidden" }}>
-          <Table hover className="table-grid table-light">
+          <Table hover className="table table-striped table-grid">
             <thead>
               <tr>
                 <th>#</th>
@@ -43,10 +43,11 @@ const Posts = () => {
                 <th>Author</th>
                 <th>Category</th>
                 <th>Date</th>
+                <th>Options</th>
               </tr>
             </thead>
             <tbody>
-               {posts.map((item, i) => {
+              {posts.map((item, i) => {
                 return (
                   <React.Fragment key={item.blogId}>
                     <tr>
@@ -55,7 +56,11 @@ const Posts = () => {
                       <td>{item.userId}</td>
                       <td>{item.category}</td>
                       <td>{new Date(item.createdAt).toLocaleDateString()}</td>
-                      <td><i class="fa fa-trash-o btn blogbutton font-weight-bolder"></i></td>
+                      <td>
+                        <i class="fa fa-eye btn option-btn font-weight-bolder mx-1"></i>
+                        <i class="fa fa-pencil btn option-btn font-weight-bolder mx-1"></i>
+                        <i class="fa fa-trash-o btn option-btn font-weight-bolder mx-1"></i>
+                      </td>
                     </tr>
                   </React.Fragment>
                 );
