@@ -1,17 +1,16 @@
 const express = require("express");
 const router = express.Router();
+const db = require("../database/db");
 
 const Admin = require("../controller/adminController");
 
-const middlewares = require("../middleware/token");
-
 //showAuthorPost
-router.get("/posts", middlewares.jwtVerification, Admin.showAuthorPost);
+router.route("/authorPost/:userId").get(Admin.showAuthorPost);
 
 //showPostComments
-router.get("/showPostComments", middlewares.jwtVerification, Admin.showPostComments);
+router.route("/showPostComments/:userId").get(Admin.showPostComments);
 
 //newPostCreated
-router.post("/newpost", middlewares.jwtVerification, Admin.NewPost);
+router.route("/Newpost").post(Admin.NewPost);
 
 module.exports = router;
