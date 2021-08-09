@@ -9,6 +9,7 @@ import { BlogContext } from "../Context/BlogContext";
 const Posts = () => {
   const [posts, setPosts] = useState([]);
   const context = useContext(BlogContext);
+  
 
   useEffect(() => {
     axios({
@@ -23,6 +24,26 @@ const Posts = () => {
     });
   }, [context.user?.token]);
 
+
+//deleting post
+  const deletePost = (id) => {
+    axios({
+      url: `http://localhost:3003/dashboard/DeletePost/${id}`,
+      method: 'DELETE',
+      headers: {
+        authorization: `Bearer ${context.user?.token}`,
+      },
+    }).then((data) => {
+      alert("Post deleted!");
+      const post= posts.filter(data => data.blogId !== id);
+      setPosts(post);
+      console.log(post);
+    });
+  }
+
+
+
+  
   return (
     <React.Fragment>
       <div className="container-fluid">
@@ -59,7 +80,7 @@ const Posts = () => {
                       <td>
                         <i className="fa fa-eye btn option-btn font-weight-bolder mx-1"></i>
                         <i className="fa fa-pencil btn option-btn font-weight-bolder mx-1"></i>
-                        <i className="fa fa-trash-o btn option-btn font-weight-bolder mx-1"></i>
+                        <i className="fa fa-trash-o btn option-btn font-weight-bolder mx-1" onClick={() => {deletePost(item.blogId)}}></i>
                       </td>
                     </tr>
                   </React.Fragment>
