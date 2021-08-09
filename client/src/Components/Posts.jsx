@@ -2,14 +2,13 @@ import React, { useEffect, useState, useContext } from "react";
 import { Table } from "reactstrap";
 import axios from "axios";
 import { BlogContext } from "../Context/BlogContext";
-// import { showAuthorPost } from "../Util/axios";
 
-// const num = 1;
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
   const context = useContext(BlogContext);
-  
 
   useEffect(() => {
     axios({
@@ -24,26 +23,28 @@ const Posts = () => {
     });
   }, [context.user?.token]);
 
-
-//deleting post
+  //deleting post
   const deletePost = (id) => {
     axios({
-      url: `http://localhost:3003/dashboard/DeletePost/${id}`,
-      method: 'DELETE',
+      url: `http://localhost:3003/deletePost/${id}`,
+      method: "DELETE",
       headers: {
         authorization: `Bearer ${context.user?.token}`,
       },
-    }).then((data) => {
-      alert("Post deleted!");
-      const post= posts.filter(data => data.blogId !== id);
-      setPosts(post);
-      console.log(post);
-    });
-  }
+    })
+      .then((data) => {
+        // alert("Post deleted!");
+        toast(data.data.message, { type: "success" });
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast(error.message, { type: "error" });
+      });
+  };
 
-
-
-  
   return (
     <React.Fragment>
       <div className="container-fluid">
@@ -61,7 +62,8 @@ const Posts = () => {
               <tr>
                 <th>#</th>
                 <th>Title</th>
-                <th>Author</th>
+                <th>Views</th>
+                <th>Featured</th>
                 <th>Category</th>
                 <th>Date</th>
                 <th>Options</th>
@@ -74,13 +76,24 @@ const Posts = () => {
                     <tr>
                       <td>{i + 1}</td>
                       <td>{item.blogTitle}</td>
-                      <td>{item.userId}</td>
+                      <td>{item.viewCounter}</td>
+                      <td>{item.featured}</td>
                       <td>{item.category}</td>
                       <td>{new Date(item.createdAt).toLocaleDateString()}</td>
                       <td>
-                        <i className="fa fa-eye btn option-btn font-weight-bolder mx-1"></i>
+                        <a
+                          href={
+                            "https://rcc-blog.netlify.app/blog/" + item.slug
+                          }
+                          target="_blank"
+                        >
+                          <i className="fa fa-eye btn option-btn font-weight-bolder mx-1"></i>
+                        </a>
                         <i className="fa fa-pencil btn option-btn font-weight-bolder mx-1"></i>
-                        <i className="fa fa-trash-o btn option-btn font-weight-bolder mx-1" onClick={() => {deletePost(item.blogId)}}></i>
+                        <i
+                          className="fa fa-trash-o btn option-btn font-weight-bolder mx-1"
+                          onClick={() => deletePost(item.blogId)}
+                        ></i>
                       </td>
                     </tr>
                   </React.Fragment>
