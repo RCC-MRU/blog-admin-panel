@@ -1,0 +1,168 @@
+.background{
+    /* background-color: blue;
+    opacity:1; */
+    padding-left:0px;
+    margin-left:0px ;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJo4KK3eXyqlazGEq2A9j1zoRf44GoKXcrdA3zvavIxBn-kuCVtl91-WthqmDIUyK0Ldg&usqp=CAU");
+    background-size: cover;
+}
+
+.top-home{
+    display:flex; 
+    padding-top: 6vh; 
+    justify-content: center;
+}
+
+.top-home-posts{
+    /* background-color:red; */
+    /* margin-left:6vh; */
+    box-shadow:5px 5px 5px 0px black;
+    width:27vh; 
+    background: #4568DC;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #B06AB3, #4568DC);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #B06AB3, #4568DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height:25vh;
+}
+
+.top-home-posts h2{
+    text-align:center;
+    padding-top: 17px;
+    color:white;
+    text-shadow:white;
+}
+
+.top-home-pendingposts{
+    box-shadow:5px 5px 5px 0px black;
+    background-color: blue;
+    margin-left:6vh;
+    width:27vh; 
+    background: #00F260;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #0575E6, #00F260);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #0575E6, #00F260); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+height:25vh;
+}
+
+.top-home-pendingposts h2{
+    text-align:center;
+    padding-top: 17px;
+    color:white;
+}
+
+.top-home-drafts{
+    box-shadow:5px 5px 5px 0px black;
+    /* background-color:green; */
+    margin-left:6vh;
+    width:27vh; 
+    background: #30E8BF;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #FF8235, #30E8BF);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #FF8235, #30E8BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+height:25vh;
+}
+
+.top-home-drafts h2{
+    text-align:center;
+    padding-top: 17px;
+    color:white;
+}
+
+.top-home-scheduledposts{
+    box-shadow:5px 5px 5px 0px black;
+    /* background-color:deeppink; */
+    margin-left:6vh;
+    width:27vh; 
+    background: #12c2e9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+height:25vh;
+}
+
+.top-home-scheduledposts h2{
+    text-align:center;
+    padding-top: 17px;
+    color:white;    
+}   
+
+.middle-home{
+    display:flex;
+    padding-top:6vh;
+    padding-left:5vh;
+    justify-content: center;
+    height:34vh;
+}
+
+.comments-home{
+    /* background-color: silver; */
+    padding-right:12vh;
+    height:34vh;
+}
+
+.comments-home h2{
+    padding-bottom: 20px;
+    color:red;
+    text-align:center;
+}
+
+.comments-home p{
+    padding-top: 10px;
+    text-align:right;
+    padding-right:10px;  
+    background-color: red;
+}
+
+.contactMessages-home{
+    /* background-color: silver; */
+    margin-left:5vh;
+    margin-right:10vh;  
+    height:34vh;
+}
+
+.contactMessages-home h2{
+    padding-bottom: 20px;
+    color:red;
+}
+
+.contactMessages-home p{
+    padding-top: 10px;
+    text-align:right;
+    padding-right:10px;  
+    background-color: red;
+}
+
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse; 
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+th, td {
+    padding: 10px;
+}
+
+.bottom-home{
+    margin-top:13vh;    
+    /* padding-left:10vh; */
+    text-align:center;
+    /* background-color: silver; */
+    height:25vh;
+}
+
+.bottom-home h2{
+    padding-bottom: 15px;
+}
+
+.bottom-home-users{
+    display:flex;   
+    justify-content: center;
+}
+
+.bottom-home img{
+    height:65px;
+}
+
+.bottom-home-users p{
+    padding:1vh 3vh;
+}

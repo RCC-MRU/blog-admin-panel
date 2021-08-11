@@ -47,7 +47,7 @@ function App() {
   const history = useHistory();
 
   useEffect(() => {
-    if (!user?.token) {
+    if (user?.token) {
       history.push("/");
     }
   }, [user?.token, history]);
