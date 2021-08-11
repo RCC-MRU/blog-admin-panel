@@ -3,13 +3,13 @@ import axios from "axios";
 let ultimateToken = {};
 
 // login the user
-let userLogin = async (loginDetails, getState) => {
+let userLogin = async (loginDetails) => {
   let response = await axios({
     method: "POST",
     url: `http://localhost:3003/admin/login`,
     data: loginDetails,
   });
-  ultimateToken['token'] = response.data.token;
+  ultimateToken["token"] = response.data.token;
   console.log(ultimateToken.token);
   console.log(response);
   return response;

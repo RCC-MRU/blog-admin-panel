@@ -12,6 +12,12 @@ router.get("/posts", middlewares.jwtVerification, Admin.showAuthorPost);
 router.get("/showPostComments", middlewares.jwtVerification, Admin.showPostComments);
 
 //newPostCreated
-router.post("/newpost", middlewares.jwtVerification, Admin.NewPost);
+router.post("/newpost", middlewares.jwtVerification, Admin.newPost);
+
+//DeletePost
+router.delete("/deletePost/:blogId", Admin.deletePost);
+
+// delete commment
+router.delete("/deleteComment/:commentId", Admin.deleteComment);
 
 module.exports = router;
