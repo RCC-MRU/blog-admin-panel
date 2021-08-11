@@ -20,4 +20,7 @@ router.delete("/deletePost/:blogId", Admin.deletePost);
 // delete commment
 router.delete("/deleteComment/:commentId", Admin.deleteComment);
 
+//Delete Comment
+router.get("/deleteComments/:id", middlewares.jwtVerification, Admin.deletePostComments);
+
 module.exports = router;
