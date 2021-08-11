@@ -31,7 +31,7 @@ body {
 
 .comments {
   background-color: gray;
-  padding-left: 20px;
+  /* padding-left: 20px; */
   margin-bottom: 10px;
 }
 
@@ -50,10 +50,10 @@ body {
   color: blue;
 }
 
-.top1 {
+/* .top1 {
   padding-left: 5%;
   padding-right: 5%;
-}
+} */
 
 .bottom1 {
   padding-left: 1%;
