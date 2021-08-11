@@ -83,9 +83,10 @@ const Posts = () => {
                       <td>
                         <a
                           href={
-                            "https://rcc-blog.netlify.app/blog/" + item.slug
+                            "https://rcc-blog.vercel.app/blog/" + item.slug
                           }
                           target="_blank"
+                          rel="noreferrer"
                         >
                           <i className="fa fa-eye btn option-btn font-weight-bolder mx-1"></i>
                         </a>
