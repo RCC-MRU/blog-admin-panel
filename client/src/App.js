@@ -8,6 +8,7 @@ import { Redirect, Switch, Route, useHistory } from "react-router-dom";
 import Footer from "./Components/Footer";
 import LeftPanel from "./Components/DashboardComponents/LeftPanel";
 import Login from "./Components/Login/Login";
+import NewPost from "./Components/New Post/NewPost";
 import { Container } from "reactstrap";
 import { BlogContext } from "./Context/BlogContext";
 
@@ -59,6 +60,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Login />
+          </Route>
+          <Route exact path="/new/post">
+            <NewPost />
           </Route>
           <Route exact path="/dashboard">
             <Layout>
