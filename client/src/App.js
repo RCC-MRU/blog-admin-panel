@@ -23,12 +23,12 @@ const Layout = ({ children }) => {
   return (
     <>
       <div className="container-fluid" style={{ width: "98%" }}>
-        <div className="row-wrapper d-flex">
-          <div className="col-md-2 sticky-bar bg-white my-4 cont h-100">
+        <div className="d-flex">
+          <div className="col-12 col-md-2 sticky-bar bg-white my-4 cont h-100">
             <LeftPanel />
           </div>
           <div className="mx-2"></div>
-          <div className="col-md-10 bg-white my-4 cont">
+          <div className="col-12 col-md-10 bg-white my-4 cont">
             <Container fluid>{children}</Container>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./NewPost.css";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
@@ -75,7 +75,9 @@ function updateThumbnail(dropZoneElement, file) {
   }
 }
 
-function App() {
+function NewPost() {
+  const [data, setData] = useState("");
+  console.log(data);
   return (
     <React.Fragment>
       <div className="container-fluid bground">
@@ -100,7 +102,11 @@ function App() {
                 />
               </div>
             </div>
-            <CKEditor editor={ClassicEditor} />
+            <CKEditor
+              editor={ClassicEditor}
+              onChange={data}
+              setData={(e) => e.target.data}
+            />
           </div>
 
           <div className="col-md-2 mx-4 sticky-bar bg-white my-4 cont min-vh-100 right">
@@ -174,9 +180,6 @@ function App() {
                   placeholder="Leave a comment here"
                   id="floatingTextarea2"
                 ></textarea>
-                <label for="floatingTextarea2">
-                  ( Text box max 300 words )
-                </label>
               </div>
             </section>
           </div>
@@ -186,4 +189,4 @@ function App() {
   );
 }
 
-export default App;
+export default NewPost;

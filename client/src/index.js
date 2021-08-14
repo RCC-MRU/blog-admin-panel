@@ -10,9 +10,9 @@ import "font-awesome/css/font-awesome.min.css";
 import "./Styles/index.css";
 import "./Styles/dashboardComp.css";
 import "./Styles/footer.css";
-import "./Styles/comments.css";
 import "./Styles/posts.css";
 import "./Styles/analytics.css";
+import "./Styles/Home.css"; 
 
 import { BrowserRouter } from "react-router-dom";
 // import reportWebVitals from "./reportWebVitals";
