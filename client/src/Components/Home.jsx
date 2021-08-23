@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
+import axios from "axios";
+import { BlogContext } from "../Context/BlogContext";
 // import axios from "axios";
 // import { BlogContext } from "../Context/BlogContext";
 // import { Table } from "reactstrap";
@@ -20,6 +22,34 @@ import React from "react";
 //   }, [context.user?.token]);
 
 const Home = () => {
+  const [posts, setPosts] = useState([]);
+  const [comments, setComments] = useState([]);
+  const context = useContext(BlogContext);
+
+  useEffect(() => {
+    axios({
+      url: "http://localhost:3003/posts",
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${context.user?.token}`,
+      },
+    }).then((data) => {
+      setPosts(data.data.result);
+      // console.log(data.data.result);
+    });
+  }, [context.user?.token]);
+
+  useEffect(() => {
+    axios({
+      url: "http://localhost:3003/showPostComments",
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${context.user?.token}`,
+      },
+    }).then((data) => {
+      setComments(data.data.result);
+    });
+  }, [context.user?.token]);
   return (
     <React.Fragment>
       {/* <div class="background">
@@ -186,16 +216,20 @@ const Home = () => {
                   <td>Inspiring post</td>
                   <td>Sanchit</td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Epitome of Masterpiece</td>
-                  <td>Ravi</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Nice Article</td>
-                  <td>Kunal</td>
-                </tr>
+                
+                {comments.map((item, i) => {
+                return (
+                  <React.Fragment key={item.blogId}>
+                    <tr>
+                      <td>{i + 1}</td>
+                      <td>{item.comment}</td>
+                      <td>{item.author}</td>
+                    </tr>
+                  </React.Fragment>
+                );
+              })}
+
+
               </tbody>
             </table>
           </div>
@@ -216,21 +250,18 @@ const Home = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Your Mood Depends on The Food</td>
-                  <td>200</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>A First Timer’s Marathon Training Plan</td>
-                  <td>170</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Healthy No-Bake Strawberry Mug Cakes Served</td>
-                  <td>150</td>
-                </tr>
+                
+                {posts.map((item, i) => {
+                return (
+                  <React.Fragment key={item.blogId}>
+                    <tr>
+                      <td>{i + 1}</td>
+                      <td>{item.blogTitle}</td>
+                      <td>{item.viewCounter}</td>
+                    </tr>
+                  </React.Fragment>
+                );
+              })}
               </tbody>
             </table>
           </div>
