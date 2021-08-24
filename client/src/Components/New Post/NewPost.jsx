@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import "./NewPost.css";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { AiOutlineArrowLeft } from "react-icons/ai";
+import { AiOutlineSave } from "react-icons/ai";
+import { AiOutlineSend } from "react-icons/ai";
+import { IconContext } from "react-icons";
+import { Link } from "react-router-dom";
 
 document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
   const dropZoneElement = inputElement.closest(".drop-zone");
@@ -83,16 +88,25 @@ function NewPost() {
       <div className="container-fluid bground">
         <div className="row">
           <div className="col-md-9 mx-4 bg-white my-4 cont text-white left">
-            <section className="my-3 ">
-              <div className="float-start">
-                <p className="text-dark fw-bolder">exit icon</p>
+            <div className="container">
+              <div className="row my-4">
+                <IconContext.Provider value={{ color: "black" }}>
+                  <Link to="/posts">
+                    <div className="col-6">
+                      <AiOutlineArrowLeft size={25} />
+                    </div>
+                  </Link>
+                </IconContext.Provider>
+                <div className="col-6 color-black ml-auto">
+                  <button className="btn save text-white fw-bolder px-5">
+                    Save{" "}
+                    <span className="pl-2">
+                      <AiOutlineSave size={25} />
+                    </span>
+                  </button>
+                </div>
               </div>
-              <div className="float-end">
-                <button className="btn save text-white fw-bolder px-5">
-                  Save
-                </button>
-              </div>
-            </section>
+            </div>
             <div className="container p-4">
               <div className="row">
                 <input
@@ -104,14 +118,17 @@ function NewPost() {
             </div>
             <CKEditor
               editor={ClassicEditor}
-              onChange={data}
-              setData={(e) => e.target.data}
+              // value={data}
+              // onChange={(e) => setData(e.target.value)}
             />
           </div>
 
           <div className="col-md-2 mx-4 sticky-bar bg-white my-4 cont min-vh-100 right">
             <button className="btn publish my-4 w-100 fs-5 fw-bolder text-white ">
               Publish
+              <span className="pl-3">
+                <AiOutlineSend size={25} />
+              </span>
             </button>
             <p className="text-center text-success">Status : published</p>
             <b className="fs-5">Permalink</b>
@@ -164,17 +181,17 @@ function NewPost() {
               </div>
             </section>
             <section>
-              <div class="drop-zone mx-3">
-                <span class="drop-zone__prompt">
+              <div className="drop-zone mx-3">
+                <span className="drop-zone__prompt">
                   Drop file here or click to upload
                 </span>
-                <input type="file" name="myFile" class="drop-zone__input" />
+                <input type="file" name="myFile" className="drop-zone__input" />
               </div>
             </section>
 
-            <section class="my-4 mx-1">
+            <section className="my-4 mx-1">
               <b className="fs-5">Meta Description</b>
-              <div class="form-floating my-4">
+              <div className="form-floating my-4">
                 <textarea
                   className="form-control"
                   placeholder="Leave a comment here"

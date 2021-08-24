@@ -3,6 +3,7 @@ body {
 }
 .save {
   background-color: #991414 !important;
+  float: right !important;
 }
 .title {
   background-color: #746e6e !important;
