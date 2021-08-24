@@ -2,6 +2,8 @@ import React, { useEffect, useState, useContext } from "react";
 import { Table } from "reactstrap";
 import axios from "axios";
 import { BlogContext } from "../Context/BlogContext";
+import { Link } from "react-router-dom";
+// import { showAuthorPost } from "../Util/axios";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -50,11 +52,13 @@ const Posts = () => {
       <div className="container-fluid">
         <header className="table-header-flex">
           <h3>Posts</h3>
-          <button className=" postbutton">
-            <h5 className="my-2 mx-2">
-              <i className="fa fa-plus-circle me-2"></i>&nbsp;New Post
-            </h5>
-          </button>
+          <Link to="/new/post">
+            <button className=" postbutton">
+              <h5 className="my-2 mx-2">
+                <i className="fa fa-plus-circle me-2"></i>&nbsp;New Post
+              </h5>
+            </button>
+          </Link>
         </header>
         <section style={{ overflowX: "hidden" }}>
           <Table hover className="table table-striped table-grid">
@@ -82,9 +86,7 @@ const Posts = () => {
                       <td>{new Date(item.createdAt).toLocaleDateString()}</td>
                       <td>
                         <a
-                          href={
-                            "https://rcc-blog.vercel.app/blog/" + item.slug
-                          }
+                          href={"https://rcc-blog.vercel.app/blog/" + item.slug}
                           target="_blank"
                           rel="noreferrer"
                         >

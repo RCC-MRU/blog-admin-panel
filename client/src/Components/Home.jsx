@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
+import axios from "axios";
+import { BlogContext } from "../Context/BlogContext";
 // import axios from "axios";
 // import { BlogContext } from "../Context/BlogContext";
 // import { Table } from "reactstrap";
@@ -20,34 +22,62 @@ import React from "react";
 //   }, [context.user?.token]);
 
 const Home = () => {
+  const [posts, setPosts] = useState([]);
+  const [comments, setComments] = useState([]);
+  const context = useContext(BlogContext);
+
+  useEffect(() => {
+    axios({
+      url: "http://localhost:3003/posts",
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${context.user?.token}`,
+      },
+    }).then((data) => {
+      setPosts(data.data.result);
+      // console.log(data.data.result);
+    });
+  }, [context.user?.token]);
+
+  useEffect(() => {
+    axios({
+      url: "http://localhost:3003/showPostComments",
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${context.user?.token}`,
+      },
+    }).then((data) => {
+      setComments(data.data.result);
+    });
+  }, [context.user?.token]);
   return (
     <React.Fragment>
-      {/* <div class="background">
-        <div class="top-home">
-          <div class="top-home-posts">
+      {/* <div className="background">
+        <div className="top-home">
+          <div className="top-home-posts">
             <h2>90+</h2>
             <h2>Posts</h2>
             <img src="undraw_Post_re_mtr4.svg" alt="" />
           </div>
-          <div class="top-home-pendingposts">
+          <div className="top-home-pendingposts">
             <h2>20+</h2>
             <h2>Pending Posts</h2>
           </div>
-          <div class="top-home-drafts">
+          <div className="top-home-drafts">
             <h2>5</h2>
             <h2>Drafts</h2>
           </div>
-          <div class="top-home-scheduledposts">
+          <div className="top-home-scheduledposts">
             <h2>2</h2>
             <h2>Scheduled Posts</h2>
             <img src="undraw_Add_files_re_v09g" alt="" />
           </div>
         </div>
 
-        <div class="middle-home">
-          <div class="comments-home">
+        <div className="middle-home">
+          <div className="comments-home">
             <h2>Comments</h2>
-            <table class="center">
+            <table className="center">
               <tr>
                 <th>Id</th>
                 <th>Name</th>
@@ -70,9 +100,9 @@ const Home = () => {
             <p>View all</p>
           </div>
 
-          <div class="contactMessages-home">
+          <div className="contactMessages-home">
             <h2>Latest Contact Messages</h2>
-            <table class="center">
+            <table className="center">
               <tr>
                 <th>Id</th>
                 <th>Name</th>
@@ -96,9 +126,9 @@ const Home = () => {
           </div>
         </div>
 
-        <div class="bottom-home">
+        <div className="bottom-home">
           <h2>Latest Users</h2>
-          <div class="bottom-home-users">
+          <div className="bottom-home-users">
             <img src="http://localhost:3002/Images/adminuser.png" alt="" />
             <p>
               Arsh Lakhina
@@ -114,11 +144,11 @@ const Home = () => {
           <div className="home-header-box cont">
             <div className="home-header-content">
               <div>
-                <h4>90+</h4>
+                <h4>{posts.length}</h4>
                 <h4>Posts</h4>
               </div>
               <div>
-                <i class="fa fa-file-o fa-3x"></i>
+                <i className="fa fa-file-o fa-3x"></i>
               </div>
             </div>
           </div>
@@ -131,7 +161,7 @@ const Home = () => {
                 <h4>Pending Posts</h4>
               </div>
               <div>
-                <i class="fa fa-low-vision fa-3x"></i>
+                <i className="fa fa-low-vision fa-3x"></i>
               </div>
             </div>
           </div>
@@ -144,7 +174,7 @@ const Home = () => {
                 <h4>Drafts</h4>
               </div>
               <div>
-                <i class="fa fa-file-text-o fa-3x"></i>
+                <i className="fa fa-file-text-o fa-3x"></i>
               </div>
             </div>
           </div>
@@ -153,11 +183,11 @@ const Home = () => {
           <div className="home-header-box cont">
             <div className="home-header-content">
               <div>
-                <h4>2</h4>
+                <h4>{comments.length}</h4>
                 <h4>Comments</h4>
               </div>
               <div>
-                <i class="fa fa-comments-o fa-3x"></i>
+                <i className="fa fa-comments-o fa-3x"></i>
               </div>
             </div>
           </div>
@@ -172,7 +202,7 @@ const Home = () => {
               <hr />
               <p>Lorem ipsum dolor sit amet.</p>
             </div>
-            <table class="table table-striped">
+            <table className="table table-striped">
               <thead>
                 <tr>
                   <th>S No.</th>
@@ -186,16 +216,18 @@ const Home = () => {
                   <td>Inspiring post</td>
                   <td>Sanchit</td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Epitome of Masterpiece</td>
-                  <td>Ravi</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Nice Article</td>
-                  <td>Kunal</td>
-                </tr>
+
+                {comments.map((item, i) => {
+                  return (
+                    <React.Fragment key={item.blogId}>
+                      <tr>
+                        <td>{i + 1}</td>
+                        <td>{item.comment}</td>
+                        <td>{item.author}</td>
+                      </tr>
+                    </React.Fragment>
+                  );
+                })}
               </tbody>
             </table>
           </div>
@@ -207,7 +239,7 @@ const Home = () => {
               <hr />
               <p>Lorem ipsum dolor sit amet.</p>
             </div>
-            <table class="table table-striped">
+            <table className="table table-striped">
               <thead>
                 <tr>
                   <th>S No.</th>
@@ -216,21 +248,17 @@ const Home = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Your Mood Depends on The Food</td>
-                  <td>200</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>A First Timer’s Marathon Training Plan</td>
-                  <td>170</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Healthy No-Bake Strawberry Mug Cakes Served</td>
-                  <td>150</td>
-                </tr>
+                {posts.map((item, i) => {
+                  return (
+                    <React.Fragment key={item.blogId}>
+                      <tr>
+                        <td>{i + 1}</td>
+                        <td>{item.blogTitle}</td>
+                        <td>{item.viewCounter}</td>
+                      </tr>
+                    </React.Fragment>
+                  );
+                })}
               </tbody>
             </table>
           </div>
