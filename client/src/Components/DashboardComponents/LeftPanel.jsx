@@ -74,6 +74,7 @@ const LeftPanel = () => {
             </Link>
           ))}
         </section>
+        
         <section>
           <div className="left-bottom-buttons fs-5 font-weight-bolder m-2">
             <i className="fa fa-cog fa-lg me-2"></i> Settings
