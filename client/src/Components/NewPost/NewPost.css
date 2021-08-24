@@ -1,10 +1,12 @@
 body {
   background-color: #d1e4e4;
 }
+
 .save {
   background-color: #991414 !important;
   float: right !important;
 }
+
 .title {
   background-color: #746e6e !important;
 }
@@ -12,6 +14,7 @@ body {
 .publish {
   background-color: #00659d !important;
 }
+
 .left,
 .right {
   box-shadow: 0 0 9px rgba(117, 10, 10, 0.6);

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, {  } from "react";
 import "./NewPost.css";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { AiOutlineArrowLeft } from "react-icons/ai";
-import { AiOutlineSave } from "react-icons/ai";
-import { AiOutlineSend } from "react-icons/ai";
-import { IconContext } from "react-icons";
+// import { AiOutlineArrowLeft } from "react-icons/ai";
+// import { AiOutlineSave } from "react-icons/ai";
+// import { AiOutlineSend } from "react-icons/ai";
+// import { IconContext } from "react-icons";
 import { Link } from "react-router-dom";
 
 document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
@@ -80,28 +80,30 @@ function updateThumbnail(dropZoneElement, file) {
   }
 }
 
-function NewPost() {
-  const [data, setData] = useState("");
-  console.log(data);
+function NewPostMain() {
+  // const [data, setData] = useState("");
+  // console.log(data);
   return (
     <React.Fragment>
       <div className="container-fluid bground">
         <div className="row">
-          <div className="col-md-9 mx-4 bg-white my-4 cont text-white left">
+          <div className="col-md-10 mx-4 bg-white my-4 cont text-white left">
             <div className="container">
               <div className="row my-4">
-                <IconContext.Provider value={{ color: "black" }}>
-                  <Link to="/posts">
+                {/* <IconContext.Provider value={{ color: "black" }}> */}
+                  <Link to="/posts" >
                     <div className="col-6">
-                      <AiOutlineArrowLeft size={25} />
+                      {/* <AiOutlineArrowLeft size={25} /> */}
+                      <i className="fa fa-arrow-left text-dark fa-lg" aria-hidden="true"></i>
                     </div>
                   </Link>
-                </IconContext.Provider>
+                {/* </IconContext.Provider> */}
                 <div className="col-6 color-black ml-auto">
                   <button className="btn save text-white fw-bolder px-5">
                     Save{" "}
                     <span className="pl-2">
-                      <AiOutlineSave size={25} />
+                      {/* <AiOutlineSave size={25} /> */}
+                      <i className="fa fa-save fa-lg"></i>
                     </span>
                   </button>
                 </div>
@@ -127,7 +129,8 @@ function NewPost() {
             <button className="btn publish my-4 w-100 fs-5 fw-bolder text-white ">
               Publish
               <span className="pl-3">
-                <AiOutlineSend size={25} />
+                {/* <AiOutlineSend size={25} /> */}
+                <i className="fa fa-paper-plane fa-lg" aria-hidden="true"></i>
               </span>
             </button>
             <p className="text-center text-success">Status : published</p>
@@ -139,7 +142,7 @@ function NewPost() {
             />
 
             <b className="fs-5 ">Catogories</b>
-            <section className="mt-2 mb-3  mx-5">
+            <section className="mt-2 mb-3 mx-5">
               <div className="dropdown">
                 <button
                   className="btn btn-secondary dropdown-toggle bg-white text-dark border-0 w-100 link-box"
@@ -206,4 +209,4 @@ function NewPost() {
   );
 }
 
-export default NewPost;
+export default NewPostMain;

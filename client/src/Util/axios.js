@@ -2,11 +2,13 @@ import axios from "axios";
 
 let ultimateToken = {};
 
+const baseURL = 'http://localhost:3003'
+
 // login the user
 let userLogin = async (loginDetails) => {
   let response = await axios({
     method: "POST",
-    url: `http://localhost:3003/admin/login`,
+    url: `${baseURL}/admin/login`,
     data: loginDetails,
   });
   ultimateToken["token"] = response.data.token;
@@ -28,4 +30,5 @@ let userLogin = async (loginDetails) => {
 //   return response;
 // };
 
+export default baseURL;
 export { userLogin };
