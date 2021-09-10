@@ -1,11 +1,8 @@
 import React, {  } from "react";
 import "./NewPost.css";
+
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-// import { AiOutlineArrowLeft } from "react-icons/ai";
-// import { AiOutlineSave } from "react-icons/ai";
-// import { AiOutlineSend } from "react-icons/ai";
-// import { IconContext } from "react-icons";
 import { Link } from "react-router-dom";
 
 document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
@@ -87,7 +84,7 @@ function NewPostMain() {
     <React.Fragment>
       <div className="container-fluid bground">
         <div className="row">
-          <div className="col-md-10 mx-4 bg-white my-4 cont text-white left">
+          <div className="col-md-9 newpost-left p-4 ml-5 bg-white my-4 cont text-white left">
             <div className="container">
               <div className="row my-4">
                 {/* <IconContext.Provider value={{ color: "black" }}> */}
@@ -99,7 +96,7 @@ function NewPostMain() {
                   </Link>
                 {/* </IconContext.Provider> */}
                 <div className="col-6 color-black ml-auto">
-                  <button className="btn save text-white fw-bolder px-5">
+                  <button className="btn save text-white fw-bolder postbutton px-5">
                     Save{" "}
                     <span className="pl-2">
                       {/* <AiOutlineSave size={25} /> */}
@@ -112,10 +109,13 @@ function NewPostMain() {
             <div className="container p-4">
               <div className="row">
                 <input
-                  type="text"
-                  className="w-100 my-2 fw-bolder title-box border-0 "
-                  placeholder="Title of the post goes here"
-                />
+              type="text"
+              placeholder="Title of the post goes here"
+              className="form-control form-border-remove no-outline"
+              
+              name="title"
+              required
+            />
               </div>
             </div>
             <CKEditor
@@ -125,8 +125,8 @@ function NewPostMain() {
             />
           </div>
 
-          <div className="col-md-2 mx-4 sticky-bar bg-white my-4 cont min-vh-100 right">
-            <button className="btn publish my-4 w-100 fs-5 fw-bolder text-white ">
+          <div className="col-md-2 mr-5 sticky-bar bg-white my-4 cont min-vh-100 right">
+            <button className="btn publish mt-5 mb-3 w-75 ml-4 fs-5 fw-bolder text-white ">
               Publish
               <span className="pl-3">
                 {/* <AiOutlineSend size={25} /> */}
@@ -137,51 +137,23 @@ function NewPostMain() {
             <b className="fs-5">Permalink</b>
             <input
               type="text"
-              className="w-100 mt-3 mb-4 link-box border-0 p-1  "
+              className="w-100 mt-3 mb-4 form-control form-border-remove no-outline p-1  "
               placeholder="Link"
             />
 
             <b className="fs-5 ">Catogories</b>
             <section className="mt-2 mb-3 mx-5">
-              <div className="dropdown">
-                <button
-                  className="btn btn-secondary dropdown-toggle bg-white text-dark border-0 w-100 link-box"
-                  type="button"
-                  id="dropdownMenuButton2"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  undefined
-                </button>
-                <ul
-                  className="dropdown-menu dropdown-menu-dark"
-                  aria-labelledby="dropdownMenuButton2"
-                >
-                  <li>
-                    <a className="dropdown-item active" href="g">
-                      Action
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="g">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="g">
-                      Something else here
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="g">
-                      Separated link
-                    </a>
-                  </li>
-                </ul>
-              </div>
+              
+<form action="">
+
+<select id="" className="form-control form-border-remove no-outline">
+  <option value="Health" className="options">Health</option>
+  <option value="Fitness" className="options">Fitness</option>
+  <option value="Workout" className="options">Workout</option>
+  <option value="Workout" className="options">default</option>
+</select>
+
+</form>
             </section>
             <section>
               <div className="drop-zone mx-3">
@@ -210,3 +182,4 @@ function NewPostMain() {
 }
 
 export default NewPostMain;
+
