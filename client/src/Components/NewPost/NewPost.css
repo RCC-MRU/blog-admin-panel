@@ -1,18 +1,35 @@
 body {
   background-color: #d1e4e4;
 }
-
+.options{
+  color: #991414 !important;
+  font-style: bolder;
+  font-size: 14px;
+}
 .save {
-  background-color: #991414 !important;
+
   float: right !important;
+  border: 2px solid #991414;
+  font-size: 15px !important;
+  background-color: #991414;
+  border-radius: 25px !important;
+  color: white;
+  transition: all 0.3s ease;
 }
 
+.save:hover{
+  color: #991414 !important;
+  background-color: #fff !important;
+  font-size: 15px !important;
+ 
+}
 .title {
   background-color: #746e6e !important;
 }
 
 .publish {
   background-color: #00659d !important;
+  border-radius: 25px !important;
 }
 
 .left,
@@ -81,3 +98,23 @@ body {
   border-bottom: 2px solid black !important;
   border-radius: 6px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
