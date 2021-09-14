@@ -1,83 +1,40 @@
 import React, {  } from "react";
+import {useState} from "react"
+import {useDropzone} from "react-dropzone"; 
 import "./NewPost.css";
 
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { Link } from "react-router-dom";
 
-document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
-  const dropZoneElement = inputElement.closest(".drop-zone");
-
-  dropZoneElement.addEventListener("click", (e) => {
-    inputElement.click();
-  });
-
-  inputElement.addEventListener("change", (e) => {
-    if (inputElement.files.length) {
-      updateThumbnail(dropZoneElement, inputElement.files[0]);
-    }
-  });
-
-  dropZoneElement.addEventListener("dragover", (e) => {
-    e.preventDefault();
-    dropZoneElement.classList.add("drop-zone--over");
-  });
-
-  ["dragleave", "dragend"].forEach((type) => {
-    dropZoneElement.addEventListener(type, (e) => {
-      dropZoneElement.classList.remove("drop-zone--over");
-    });
-  });
-
-  dropZoneElement.addEventListener("drop", (e) => {
-    e.preventDefault();
-
-    if (e.dataTransfer.files.length) {
-      inputElement.files = e.dataTransfer.files;
-      updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
-    }
-
-    dropZoneElement.classList.remove("drop-zone--over");
-  });
-});
-
-/**
- * Updates the thumbnail on a drop zone element.
- *
- * @param {HTMLElement} dropZoneElement
- * @param {File} file
- */
-function updateThumbnail(dropZoneElement, file) {
-  let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
-
-  // First time - remove the prompt
-  if (dropZoneElement.querySelector(".drop-zone__prompt")) {
-    dropZoneElement.querySelector(".drop-zone__prompt").remove();
-  }
-
-  // First time - there is no thumbnail element, so lets create it
-  if (!thumbnailElement) {
-    thumbnailElement = document.createElement("div");
-    thumbnailElement.classList.add("drop-zone__thumb");
-    dropZoneElement.appendChild(thumbnailElement);
-  }
-
-  thumbnailElement.dataset.label = file.name;
-
-  // Show thumbnail for image files
-  if (file.type.startsWith("image/")) {
-    const reader = new FileReader();
-
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
-    };
-  } else {
-    thumbnailElement.style.backgroundImage = null;
-  }
-}
 
 function NewPostMain() {
+
+  const [files, setFiles] = useState([])
+
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: "image/*",
+    onDrop: (acceptedFiles) => {
+      setFiles(
+        acceptedFiles.map((file) =>
+          Object.assign(file, {
+            preview: URL.createObjectURL(file),
+          })
+        )
+      )
+    },
+  })
+
+  const images = files.map((file) => (
+    <div key={file.name}>
+      <div>
+        <img src={file.preview} style={{ width: "200px" }} alt="preview" />
+      </div>
+    </div>
+  ))
+
+
+
   // const [data, setData] = useState("");
   // console.log(data);
   return (
@@ -155,13 +112,18 @@ function NewPostMain() {
 
 </form>
             </section>
-            <section>
-              <div className="drop-zone mx-3">
+            <section className="draganddrop">
+            <div {...getRootProps()}>
+        <input {...getInputProps()} />
+        <p>Drop files here</p>
+      </div>
+      <div>{images}</div>
+              {/* <div className="drop-zone mx-3">
                 <span className="drop-zone__prompt">
                   Drop file here or click to upload
                 </span>
                 <input type="file" name="myFile" className="drop-zone__input" />
-              </div>
+              </div> */}
             </section>
 
             <section className="my-4 mx-1">
