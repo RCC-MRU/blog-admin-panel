@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import React, {  } from "react";
 import {useState} from "react"
 import {useDropzone} from "react-dropzone"; 
@@ -140,3 +141,5 @@ function NewPostMain() {
 
 export default NewPostMain;
 
+=======
+>>>>>>> Stashed changes
