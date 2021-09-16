@@ -99,11 +99,11 @@ function NewPostMain() {
             />
 
             <b className="fs-5 ">Catogories</b>
-            <section className="mt-2 mb-3 mx-5">
+            <section className="mt-2 mb-3 ">
               
 <form action="">
 
-<select id="" className="form-control form-border-remove no-outline">
+<select id="catogory" className="  form-control form-border-remove no-outline">
   <option value="Health" className="options">Health</option>
   <option value="Fitness" className="options">Fitness</option>
   <option value="Workout" className="options">Workout</option>
@@ -112,18 +112,13 @@ function NewPostMain() {
 
 </form>
             </section>
-            <section className="draganddrop">
+            <section className="dragbox px-2 text-center mt-4 mb-4">
             <div {...getRootProps()}>
         <input {...getInputProps()} />
-        <p>Drop files here</p>
+        <p className="dropbox p-2 " >Drop files here</p>
       </div>
       <div>{images}</div>
-              {/* <div className="drop-zone mx-3">
-                <span className="drop-zone__prompt">
-                  Drop file here or click to upload
-                </span>
-                <input type="file" name="myFile" className="drop-zone__input" />
-              </div> */}
+              
             </section>
 
             <section className="my-4 mx-1">
