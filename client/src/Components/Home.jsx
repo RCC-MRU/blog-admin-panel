@@ -1,25 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { BlogContext } from "../Context/BlogContext";
-// import axios from "axios";
-// import { BlogContext } from "../Context/BlogContext";
-// import { Table } from "reactstrap";
-
-// const Comments = () => {
-//   const [comments, setHome] = useState([]);
-//   const context = useContext(BlogContext);
-
-//   useEffect(() => {
-//     axios({
-//       url: "http://localhost:3003/showPostComments",
-//       method: "GET",
-//       headers: {
-//         authorization: `Bearer ${context.user?.token}`,
-//       },
-//     }).then((data) => {
-//       setHome(data.data.result);
-//     });
-//   }, [context.user?.token]);
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -52,7 +34,6 @@ const Home = () => {
   }, [context.user?.token]);
   return (
     <React.Fragment>
-
       <div className="row my-3">
         <div className="col-md-6 col-lg-3 my-3">
           <div className="home-header-box cont">
@@ -111,11 +92,12 @@ const Home = () => {
       <div className="row my-4">
         <div className="col-md-6 my-2">
           <div className="home-table-box cont">
-            <div className="px-3 pt-2">
-              <h4>Latest Comments</h4>
-              <hr />
-              <p>Lorem ipsum dolor sit amet.</p>
-            </div>
+            <Link to="/comments" className="Link-highlight">
+              <div className="p-3">
+                <h4>Comments you've got</h4>
+              </div>
+            </Link>
+
             <table className="table table-striped">
               <thead>
                 <tr>
@@ -142,11 +124,12 @@ const Home = () => {
         </div>
         <div className="col-md-6 my-2">
           <div className="home-table-box cont">
-            <div className="px-3 pt-2">
-              <h4>Newer Posts</h4>
-              <hr />
-              <p>Lorem ipsum dolor sit amet.</p>
-            </div>
+            <Link to="/posts" className="Link-highlight">
+              <div className="p-3">
+                <h4>Published Posts</h4>
+              </div>
+            </Link>
+
             <table className="table table-striped">
               <thead>
                 <tr>

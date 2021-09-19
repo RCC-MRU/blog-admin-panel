@@ -11,33 +11,13 @@ body {
   background-color: #d1e4e4;
 }
 
-.posts {
-  background-color: gray;
-  padding-left: 20px;
-  margin-bottom: 10px;
+.Link-highlight {
+  text-decoration: none;
+  color: #000000;
 }
 
-.analytics {
-  background-color: gray;
-  padding-left: 20px;
-  margin-bottom: 10px;
-}
-
-.media {
-  background-color: gray;
-  padding-left: 20px;
-  margin-bottom: 10px;
-}
-
-.comments {
-  background-color: gray;
-  /* padding-left: 20px; */
-  margin-bottom: 10px;
-}
-
-.adminPanel {
-  background-color: lightgray;
-  display: flex;
+.Link-highlight:hover {
+  text-decoration: none;
 }
 
 .material-icons {
@@ -49,11 +29,6 @@ body {
 .author {
   color: blue;
 }
-
-/* .top1 {
-  padding-left: 5%;
-  padding-right: 5%;
-} */
 
 .bottom1 {
   padding-left: 1%;
