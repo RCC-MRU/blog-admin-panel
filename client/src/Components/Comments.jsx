@@ -78,7 +78,7 @@ const Comments = () => {
                     <td>{item.blogTitle}</td>
                     <td>{item.comment}</td>
                     <td>{new Date(item.createdAt).toLocaleDateString()}</td>
-                    <td>
+                    <td >
                       <i className="fa fa-eye btn option-btn font-weight-bolder mx-1"></i>
                       <i className="fa fa-pencil btn option-btn font-weight-bolder mx-1"></i>
                       <i

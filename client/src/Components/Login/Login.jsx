@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./Login.css";
 import { BlogContext } from "../../Context/BlogContext";
 import { userLogin } from "../../Util/axios";
@@ -84,9 +84,6 @@ const Login = () => {
             <button type="submit" className="btn btn-col" id="login">
               <span className="log-txt-for">Login</span>
             </button>
-            {/* <Link to="/forgotpassword" className="Link-highlight">
-              <div className="forgotpass">Forgot Password?</div>
-            </Link> */}
           </div>
         </form>
       </div>
