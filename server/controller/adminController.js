@@ -75,4 +75,17 @@ module.exports = {
     });
     console.log(query.sql);
   },
+
+  //get the category list from database
+  getCategoryList: async function (req, res) {
+    let sqlQuery = `SELECT categoryValue, slug FROM category_master`;
+
+    const query = db.query(sqlQuery, (err, result) => {
+      if (err) throw err;
+      res.status(200).json({
+        message: "Category list is displayed",
+        result: result,
+      });
+    });
+  },
 };

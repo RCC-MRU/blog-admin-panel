@@ -9,15 +9,30 @@ const middlewares = require("../middleware/token");
 router.get("/posts", middlewares.jwtVerification, Admin.showAuthorPost);
 
 //showPostComments
-router.get("/showPostComments", middlewares.jwtVerification, Admin.showPostComments);
+router.get(
+  "/showPostComments",
+  middlewares.jwtVerification,
+  Admin.showPostComments
+);
 
 //newPostCreated
 router.post("/newpost", middlewares.jwtVerification, Admin.newPost);
 
 //DeletePost
-router.delete("/deletePost/:blogId", Admin.deletePost);
+router.delete(
+  "/deletePost/:blogId",
+  middlewares.jwtVerification,
+  Admin.deletePost
+);
 
 // delete commment
-router.delete("/deleteComment/:commentId", Admin.deleteComment);
+router.delete(
+  "/deleteComment/:commentId",
+  middlewares.jwtVerification,
+  Admin.deleteComment
+);
+
+// get the category list from database
+router.get("/get-category", middlewares.jwtVerification, Admin.getCategoryList);
 
 module.exports = router;
