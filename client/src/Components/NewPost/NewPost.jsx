@@ -1,39 +1,77 @@
-import React from "react";
-import Footer from "../Footer";
-import { useState } from "react";
-import { useDropzone } from "react-dropzone";
+import React, { useState } from "react";
 import "./NewPost.css";
+import firebase from "firebase/compat/app";
 
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { Link } from "react-router-dom";
-
+import { readAndCompressImage } from "browser-image-resizer";
+import { imageConfig } from "../../Util/config";
+import { toast } from "react-toastify";
+import { Spinner } from "reactstrap";
 function NewPostMain() {
-  const [files, setFiles] = useState([]);
+  const [data, setData] = useState("");
+  const [isUploading, setIsUploading] = useState(false);
+  const [downloadUrl, setDownloadUrl] = useState(null);
+  const imagePicker = async (e) => {
+    // TODO: upload image and set D-URL to state
 
-  const { getRootProps, getInputProps } = useDropzone({
-    accept: "image/*",
-    onDrop: (acceptedFiles) => {
-      setFiles(
-        acceptedFiles.map((file) =>
-          Object.assign(file, {
-            preview: URL.createObjectURL(file),
-          })
-        )
+    try {
+      const file = e.target.files[0];
+
+      var metadata = {
+        contentType: file?.type,
+      };
+
+      let resizedImage = await readAndCompressImage(file, imageConfig);
+
+      const storageRef = await firebase.storage().ref();
+      var uploadTask = storageRef
+        .child("images/" + file?.name)
+        .put(resizedImage, metadata);
+
+      uploadTask.on(
+        firebase.storage.TaskEvent.STATE_CHANGED,
+        (snapshot) => {
+          setIsUploading(true);
+          var progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
+          // eslint-disable-next-line default-case
+          switch (snapshot.state) {
+            case firebase.storage.TaskState.PAUSED:
+              setIsUploading(false);
+              console.log("UPloading is paused");
+              break;
+            case firebase.storage.TaskState.RUNNING:
+              console.log("UPloading is in progress...");
+              break;
+          }
+          if (progress === 100) {
+            setIsUploading(false);
+            toast("uploaded", { type: "success" });
+          }
+        },
+        (error) => {
+          toast("something is wrong in state change", { type: "error" });
+        },
+        () => {
+          uploadTask.snapshot.ref
+            .getDownloadURL()
+            .then((downloadURL) => {
+              setDownloadUrl(downloadURL);
+            })
+            .catch((err) => console.log(err));
+        }
       );
-    },
-  });
-
-  const images = files.map((file) => (
-    <div key={file.name}>
-      <div>
-        <img src={file.preview} style={{ width: "200px" }} alt="preview" />
-      </div>
-    </div>
-  ));
-
-  // const [data, setData] = useState("");
-  // console.log(data);
+    } catch (error) {
+      console.error(error);
+      toast("Something went wrong", { type: "error" });
+    }
+  };
+  console.log(downloadUrl);
+  const handleStateChange = (e, editor) => setData(editor.getData());
+  console.log(data);
   return (
     <React.Fragment>
       <div className="container-fluid">
@@ -74,10 +112,27 @@ function NewPostMain() {
                 />
               </div>
             </div>
-
-            <div className="py-3">
-              <CKEditor editor={ClassicEditor} />
-            </div>
+            <CKEditor
+              editor={ClassicEditor}
+              data={data}
+              onChange={handleStateChange}
+              config={{
+                toolbar: {
+                  items: [
+                    "heading",
+                    "|",
+                    "bold",
+                    "italic",
+                    "|",
+                    "bulletedList",
+                    "numberedList",
+                    "|",
+                    "undo",
+                    "redo",
+                  ],
+                },
+              }}
+            />
           </div>
 
           <div className="mx-2"></div>
@@ -129,13 +184,39 @@ function NewPostMain() {
             </section>
 
             {/* Image block */}
-            <section className="d-block text-center px-3 py-3">
-              <div {...getRootProps()}>
-                <input {...getInputProps()} />
-                <p className="dropbox p-2 ">Drop files here</p>
-              </div>
-              <div>{images}</div>
-            </section>
+            {/* <section className="d-block text-center px-3 py-3">
+              <p className="dropbox p-2 ">Click here to select cover image
+              </p>
+            </section> */}
+            {downloadUrl === null ? (
+              <input
+                type="file"
+                name="image"
+                id="imagepicker"
+                accept="image/*"
+                multiple={false}
+                onChange={(e) => imagePicker(e)}
+                className="form-control dropbox"
+              />
+            ) : (
+              <>
+                <img
+                  src={downloadUrl}
+                  alt="file"
+                  height="150"
+                  width="200"
+                  className="text-center img-fluid"
+                />
+                <button onClick={() => setDownloadUrl(null)}>
+                  Select another image
+                </button>{" "}
+              </>
+            )}
+            {isUploading ? (
+              <Spinner type="grow" color="primary" className="text-center" />
+            ) : (
+              ""
+            )}
 
             {/* Meta description */}
             <section className="d-block text-center px-3 py-3">
@@ -151,13 +232,12 @@ function NewPostMain() {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </React.Fragment>
   );
 }
 
-export default NewPostMain;
-
 // TODO: css of left and right column resp
 // col-md-9 newpost-left p-4 ml-5 bg-white my-4 cont text-white left
 // col-md-2 mr-5 sticky-bar bg-white my-4 cont min-vh-100 right
+export default NewPostMain;
