@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Footer from "../Footer";
 import "./NewPost.css";
 import firebase from "firebase/compat/app";
 
@@ -9,10 +10,17 @@ import { readAndCompressImage } from "browser-image-resizer";
 import { imageConfig } from "../../Util/config";
 import { toast } from "react-toastify";
 import { Spinner } from "reactstrap";
+
 function NewPostMain() {
   const [data, setData] = useState("");
   const [isUploading, setIsUploading] = useState(false);
   const [downloadUrl, setDownloadUrl] = useState(null);
+
+  // const imageChooser = (e) => {
+  //   console.log(e.target.file);
+  //   return e.target.files[0];
+  // }
+
   const imagePicker = async (e) => {
     // TODO: upload image and set D-URL to state
 
@@ -23,11 +31,13 @@ function NewPostMain() {
         contentType: file?.type,
       };
 
+      // console.log(file.name);
+
       let resizedImage = await readAndCompressImage(file, imageConfig);
 
       const storageRef = await firebase.storage().ref();
       var uploadTask = storageRef
-        .child("images/" + file?.name)
+        .child("blog-upload/" + file?.name)
         .put(resizedImage, metadata);
 
       uploadTask.on(
@@ -232,7 +242,7 @@ function NewPostMain() {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </React.Fragment>
   );
 }
