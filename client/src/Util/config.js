@@ -7,7 +7,6 @@ export const imageConfig = {
   maxHeight: 800,
   autoRotate: true,
 };
-
 export const firebaseConfig = {
   apiKey: "AIzaSyDHLFIgy2KpAH89hpYFhQq36GSdym4gn40",
   authDomain: "github-finder-9f607.firebaseapp.com",
