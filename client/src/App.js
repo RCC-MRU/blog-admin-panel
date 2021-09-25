@@ -13,6 +13,10 @@ import { Container } from "reactstrap";
 import { BlogContext } from "./Context/BlogContext";
 
 import { ToastContainer } from "react-toastify";
+import { firebaseConfig } from "./Util/config";
+import firebase from "firebase/compat/app";
+import "firebase/compat/database";
+import "firebase/compat/storage";
 
 //local storage items
 const emailLocal = sessionStorage.getItem("email");
@@ -39,6 +43,7 @@ const Layout = ({ children }) => {
 };
 
 function App() {
+  firebase.initializeApp(firebaseConfig);
   const [user, setUser] = useState({
     email: emailLocal,
     name: nameLocal,
