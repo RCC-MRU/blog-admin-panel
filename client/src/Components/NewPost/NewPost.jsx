@@ -66,7 +66,7 @@ function NewPostMain() {
       );
     } catch (error) {
       console.error(error);
-      toast("Something went wrong", { type: "error" });
+      toast("Something went wrong on client side", { type: "error" });
     }
   };
   console.log(downloadUrl);
