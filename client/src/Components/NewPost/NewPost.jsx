@@ -16,7 +16,6 @@ import { Spinner } from "reactstrap";
 
 function NewPostMain() {
   const [getblogInputData, setblogInputData] = useState({
-    userId: "",
     blogTitle: "",
     blogImg: "",
     metaDescription: "",
@@ -125,6 +124,15 @@ function NewPostMain() {
       blogImg: downloadUrl,
       blogContent: data,
     });
+
+    axios({
+      method: "POST",
+      url: `${baseURL}/add-blog`,
+      data: getblogInputData,
+      headers: { authorization: `Bearer ${context.user?.token}` },
+    })
+      .then()
+      .catch();
   };
 
   // permalink = slug

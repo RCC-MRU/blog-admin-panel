@@ -1,5 +1,6 @@
 const express = require("express");
 const db = require("../database/db");
+const slugify = require("slugify");
 
 //show Author Posts
 module.exports = {
@@ -33,10 +34,25 @@ module.exports = {
 
   //Create new post
   newPost: async function (req, res) {
-    let CreatePost = req.body;
+    let { blogTitle, blogImg, metaDescription, blogContent, category } =
+      req.body;
     let sql = `INSERT INTO blog SET ?`;
 
-    const query = db.query(sql, CreatePost, (err, results) => {
+    let createPost = {
+      userId: req.result.userId,
+      blogTitle: blogTitle,
+      blogImg: blogImg,
+      metaDescription: metaDescription,
+      blogContent: blogContent,
+      category: category,
+      slug: slugify(blogTitle, {
+        replacement: "-",
+        lower: true,
+        remove: /[*+~.()'"!:@]/g,
+      }),
+    };
+
+    const query = db.query(sql, createPost, (err, results) => {
       if (err) throw err;
       res.status(200).json({
         message: "New Post created",
