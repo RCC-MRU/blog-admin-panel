@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Footer from "../Footer";
 import "./NewPost.css";
 import firebase from "firebase/compat/app";
+import axios from "axios";
+import baseURL from "../../Util/axios";
+import { BlogContext } from "../../Context/BlogContext";
 
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
@@ -12,14 +15,37 @@ import { toast } from "react-toastify";
 import { Spinner } from "reactstrap";
 
 function NewPostMain() {
+  const [getblogInputData, setblogInputData] = useState({
+    blogTitle: "",
+    blogImg: "",
+    metaDescription: "",
+    blogContent: "",
+    category: "",
+  });
   const [data, setData] = useState("");
+
   const [isUploading, setIsUploading] = useState(false);
   const [downloadUrl, setDownloadUrl] = useState(null);
+  const [getCategory, setCategory] = useState([]);
+  const context = useContext(BlogContext);
 
   // const imageChooser = (e) => {
   //   console.log(e.target.file);
   //   return e.target.files[0];
   // }
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: `${baseURL}/get-category`,
+      headers: { authorization: `Bearer ${context.user?.token}` },
+    })
+      .then((categoryData) => {
+        setCategory(categoryData.data.result);
+        // console.log(categoryData.data.result);
+      })
+      .catch((err) => console.log(err));
+  }, [context.user?.token]);
 
   const imagePicker = async (e) => {
     // TODO: upload image and set D-URL to state
@@ -79,9 +105,44 @@ function NewPostMain() {
       toast("Something went wrong on client side", { type: "error" });
     }
   };
-  console.log(downloadUrl);
-  const handleStateChange = (e, editor) => setData(editor.getData());
-  console.log(data);
+  // console.log(downloadUrl);
+
+  const getCKEditorData = (e, editor) => setData(editor.getData());
+  console.log("CK Editor", data);
+  console.log("Normal data", getblogInputData);
+
+  const handleStateChange = (event) => {
+    setblogInputData({
+      ...getblogInputData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = async (event) => {
+    setblogInputData({
+      ...getblogInputData,
+      blogImg: downloadUrl,
+      blogContent: data,
+    });
+
+    await axios({
+      method: "POST",
+      url: `${baseURL}/add-blog`,
+      data: getblogInputData,
+      headers: { authorization: `Bearer ${context.user?.token}` },
+    })
+      .then((resp) => {
+        console.log(resp);
+        toast("Blog added successfully", { type: "success" });
+        window.location.href = `/posts`;
+      })
+      .catch((err) => {
+        console.log(err);
+        toast(err.message, { type: "error" });
+      });
+  };
+
+  // permalink = slug
   return (
     <React.Fragment>
       <div className="container-fluid">
@@ -93,22 +154,18 @@ function NewPostMain() {
                 <Link to="/posts">
                   <div className="col-6">
                     {/* <AiOutlineArrowLeft size={25} /> */}
-                    <i
-                      className="fa fa-arrow-left text-dark fa-lg"
-                      aria-hidden="true"
-                    ></i>
+                    <i className="fa fa-arrow-left text-dark fa-lg"></i>
                   </div>
                 </Link>
                 {/* </IconContext.Provider> */}
-                <div className="col-6 color-black ml-auto">
+                {/* <div className="col-6 color-black ml-auto">
                   <button className="btn save text-white fw-bolder postbutton px-5">
                     Save{" "}
                     <span className="pl-2">
-                      {/* <AiOutlineSave size={25} /> */}
                       <i className="fa fa-save fa-lg"></i>
                     </span>
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="container p-4">
@@ -117,7 +174,8 @@ function NewPostMain() {
                   type="text"
                   placeholder="Title of the post goes here"
                   className="form-control form-border-remove no-outline"
-                  name="title"
+                  name="blogTitle"
+                  onChange={handleStateChange}
                   required
                 />
               </div>
@@ -125,7 +183,7 @@ function NewPostMain() {
             <CKEditor
               editor={ClassicEditor}
               data={data}
-              onChange={handleStateChange}
+              onChange={getCKEditorData}
               config={{
                 toolbar: {
                   items: [
@@ -150,7 +208,9 @@ function NewPostMain() {
           <div className="col-12 col-md-2 sticky-bar bg-white my-4 cont h-100">
             {/* Button */}
             <section className="d-block text-center px-3 py-3">
-              <button className="btn publish font-weight-bolder text-white w-100">
+              <button
+                className="btn publish font-weight-bolder text-white w-100"
+                onClick={handleSubmit}>
                 Publish &nbsp;
                 <i className="fa fa-paper-plane fa-lg"></i>
               </button>
@@ -158,14 +218,14 @@ function NewPostMain() {
             </section>
 
             {/* Link block */}
-            <section className="d-block text-center px-3 py-3">
+            {/* <section className="d-block text-center px-3 py-3">
               <b className="fs-5">Permalink</b>
               <input
                 type="text"
                 className="w-100 mt-3 mb-4 form-control form-border-remove no-outline p-1  "
                 placeholder="Link"
               />
-            </section>
+            </section> */}
 
             {/* Category selection block */}
             <section className="d-block text-center px-3 py-3">
@@ -174,9 +234,23 @@ function NewPostMain() {
                 <form action="">
                   <select
                     id="catogory"
-                    className="  form-control form-border-remove no-outline"
-                  >
-                    <option value="Health" className="options">
+                    name="category"
+                    className="form-control form-border-remove no-outline"
+                    onChange={handleStateChange}>
+                    <option value="Default" className="options">
+                      Default
+                    </option>
+                    {getCategory.map((cat) => {
+                      return (
+                        <option
+                          value={cat.categoryValue}
+                          className="options"
+                          key={cat.slug}>
+                          {cat.categoryValue}
+                        </option>
+                      );
+                    })}
+                    {/* <option value="Health" className="options">
                       Health
                     </option>
                     <option value="Fitness" className="options">
@@ -187,7 +261,7 @@ function NewPostMain() {
                     </option>
                     <option value="Workout" className="options">
                       default
-                    </option>
+                    </option> */}
                   </select>
                 </form>
               </div>
@@ -199,17 +273,20 @@ function NewPostMain() {
               </p>
             </section> */}
             {downloadUrl === null ? (
-              <input
-                type="file"
-                name="image"
-                id="imagepicker"
-                accept="image/*"
-                multiple={false}
-                onChange={(e) => imagePicker(e)}
-                className="form-control dropbox"
-              />
+              <div className="upload-btn-wrapper">
+                <button className="btn postbutton">Upload a file</button>
+                <input
+                  type="file"
+                  name="blogImg"
+                  id="imagepicker"
+                  accept="image/*"
+                  multiple={false}
+                  onChange={(e) => imagePicker(e)}
+                  className="form-control dropbox"
+                />
+              </div>
             ) : (
-              <>
+              <div className="text-center">
                 <img
                   src={downloadUrl}
                   alt="file"
@@ -217,13 +294,17 @@ function NewPostMain() {
                   width="200"
                   className="text-center img-fluid"
                 />
-                <button onClick={() => setDownloadUrl(null)}>
+                <button
+                  onClick={() => setDownloadUrl(null)}
+                  className="btn postbutton mt-2">
                   Select another image
                 </button>{" "}
-              </>
+              </div>
             )}
             {isUploading ? (
-              <Spinner type="grow" color="primary" className="text-center" />
+              <div className="text-center">
+                <Spinner type="grow" color="primary" size="large" />
+              </div>
             ) : (
               ""
             )}
@@ -235,8 +316,9 @@ function NewPostMain() {
                 <textarea
                   className="form-control form-border-remove no-outline"
                   placeholder="Meta Description"
-                  id="floatingTextarea2"
-                ></textarea>
+                  name="metaDescription"
+                  onChange={handleStateChange}
+                  id="floatingTextarea2"></textarea>
               </div>
             </section>
           </div>

@@ -16,7 +16,7 @@ router.get(
 );
 
 //newPostCreated
-router.post("/newpost", middlewares.jwtVerification, Admin.newPost);
+router.post("/add-blog", middlewares.jwtVerification, Admin.newPost);
 
 //DeletePost
 router.delete(

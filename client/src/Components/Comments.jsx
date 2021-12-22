@@ -6,13 +6,15 @@ import { Table } from "reactstrap";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import baseURL from "../Util/axios";
+
 const Comments = () => {
   const [comments, setComments] = useState([]);
   const context = useContext(BlogContext);
 
   useEffect(() => {
     axios({
-      url: "http://localhost:3003/showPostComments",
+      url: `${baseURL}/showPostComments`,
       method: "GET",
       headers: {
         authorization: `Bearer ${context.user?.token}`,
@@ -24,7 +26,7 @@ const Comments = () => {
 
   const deleteComment = (commentIDFromUser) => {
     axios({
-      url: `http://localhost:3003/deleteComment/${commentIDFromUser}`,
+      url: `${baseURL}/deleteComment/${commentIDFromUser}`,
       method: "DELETE",
       headers: {
         authorization: `Bearer ${context.user?.token}`,
@@ -78,13 +80,12 @@ const Comments = () => {
                     <td>{item.blogTitle}</td>
                     <td>{item.comment}</td>
                     <td>{new Date(item.createdAt).toLocaleDateString()}</td>
-                    <td >
+                    <td>
                       <i className="fa fa-eye btn option-btn font-weight-bolder mx-1"></i>
                       <i className="fa fa-pencil btn option-btn font-weight-bolder mx-1"></i>
                       <i
                         className="fa fa-trash-o btn option-btn font-weight-bolder mx-1"
-                        onClick={() => deleteComment(item.commentId)}
-                      ></i>
+                        onClick={() => deleteComment(item.commentId)}></i>
                     </td>
                   </tr>
                 );
