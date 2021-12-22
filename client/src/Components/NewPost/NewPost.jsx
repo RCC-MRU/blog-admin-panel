@@ -125,14 +125,21 @@ function NewPostMain() {
       blogContent: data,
     });
 
-    axios({
+    await axios({
       method: "POST",
       url: `${baseURL}/add-blog`,
       data: getblogInputData,
       headers: { authorization: `Bearer ${context.user?.token}` },
     })
-      .then()
-      .catch();
+      .then((resp) => {
+        console.log(resp);
+        toast("Blog added successfully", { type: "success" });
+        window.location.href = `/posts`;
+      })
+      .catch((err) => {
+        console.log(err);
+        toast(err.message, { type: "error" });
+      });
   };
 
   // permalink = slug
