@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Home from "./Components/Home";
 import Posts from "./Components/Posts";
 import Comments from "./Components/Comments";
-import Analytics from "./Components/Analytics";
+// import Analytics from "./Components/Analytics";
 import { Redirect, Switch, Route, useHistory } from "react-router-dom";
 
 import Footer from "./Components/Footer";
@@ -79,11 +79,11 @@ function App() {
               <Posts />
             </Layout>
           </Route>
-          <Route exact path="/analytics">
+          {/* <Route exact path="/analytics">
             <Layout>
               <Analytics />
             </Layout>
-          </Route>
+          </Route> */}
           <Route exact path="/comments">
             <Layout>
               <Comments />

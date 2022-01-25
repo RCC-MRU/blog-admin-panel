@@ -114,17 +114,21 @@ function NewPostMain() {
   const handleStateChange = (event) => {
     setblogInputData({
       ...getblogInputData,
+      blogContent: data,
       [event.target.name]: event.target.value,
     });
   };
 
-  const handleSubmit = async (event) => {
+  const handleSave = async (event) => {
     setblogInputData({
       ...getblogInputData,
       blogImg: downloadUrl,
       blogContent: data,
     });
+    toast("Blog is ready to post", { type: "info" });
+  };
 
+  const handleSubmit = async (event) => {
     await axios({
       method: "POST",
       url: `${baseURL}/add-blog`,
@@ -209,7 +213,13 @@ function NewPostMain() {
             {/* Button */}
             <section className="d-block text-center px-3 py-3">
               <button
-                className="btn publish font-weight-bolder text-white w-100"
+                className="btn publish font-weight-bolder text-white w-100 mb-3"
+                onClick={handleSave}>
+                Save &nbsp;
+                <i className="fa fa-paper-plane fa-lg"></i>
+              </button>
+              <button
+                className="btn publish font-weight-bolder text-white w-100 mb-3"
                 onClick={handleSubmit}>
                 Publish &nbsp;
                 <i className="fa fa-paper-plane fa-lg"></i>
