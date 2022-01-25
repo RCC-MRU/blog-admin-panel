@@ -39,11 +39,9 @@ const Home = () => {
         <div className="row my-3">
           <div className="col-md-6 my-2">
             <div className="home-table-box cont">
-              <Link to="/comments" className="Link-highlight">
-                <div className="p-3">
-                  <h4>Comments you've got ({comments.length})</h4>
-                </div>
-              </Link>
+              <div className="px-2 py-3">
+                <h4>Latest Comments</h4>
+              </div>
 
               <table className="table table-striped">
                 <thead>
@@ -54,7 +52,7 @@ const Home = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {comments.map((item, i) => {
+                  {comments.slice(0, 3).map((item, i) => {
                     return (
                       <React.Fragment key={item.blogId}>
                         <tr>
@@ -67,15 +65,17 @@ const Home = () => {
                   })}
                 </tbody>
               </table>
+
+              <Link to="/comments" className="Link-highlight">
+                <p className="px-2 py-2">Click to see more...</p>
+              </Link>
             </div>
           </div>
           <div className="col-md-6 my-2">
             <div className="home-table-box cont">
-              <Link to="/posts" className="Link-highlight">
-                <div className="p-3">
-                  <h4>Published Posts ({posts.length})</h4>
-                </div>
-              </Link>
+              <div className="px-2 py-3">
+                <h4>Published Posts</h4>
+              </div>
 
               <table className="table table-striped">
                 <thead>
@@ -86,7 +86,7 @@ const Home = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {posts.map((item, i) => {
+                  {posts.slice(0, 3).map((item, i) => {
                     return (
                       <React.Fragment key={item.blogId}>
                         <tr>
@@ -99,6 +99,10 @@ const Home = () => {
                   })}
                 </tbody>
               </table>
+
+              <Link to="/posts" className="Link-highlight">
+                <p className="px-2 py-2">Click to see more...</p>
+              </Link>
             </div>
           </div>
         </div>

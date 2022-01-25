@@ -6,7 +6,7 @@ const list = [
   { data: "Home", link: "/dashboard", icon: "fa fa-home" },
   { data: "Posts", link: "/posts", icon: "fa fa-thumb-tack" },
   { data: "Comments", link: "/comments", icon: "fa fa-comment " },
-  { data: "Analytics", link: "/analytics", icon: "fa fa-signal " },
+  // { data: "Analytics", link: "/analytics", icon: "fa fa-signal " },
 ];
 
 const LeftPanel = () => {
@@ -34,8 +34,7 @@ const LeftPanel = () => {
           style={{
             textAlign: "center",
             width: "100%",
-          }}
-        >
+          }}>
           <figure>
             <img
               src={process.env.PUBLIC_URL + "Images/adminuser.png"}
@@ -51,8 +50,7 @@ const LeftPanel = () => {
             rel="noreferrer"
             className="btn blogbutton font-weight-bolder my-2"
             target="_blank"
-            type="button"
-          >
+            type="button">
             <i className="fa fa-book me-2"></i>&nbsp;View Blog
           </a>
         </section>
@@ -68,21 +66,19 @@ const LeftPanel = () => {
                 index === value && `isActive`
               }`}
               // activeClassName="isActive"
-              to={detail.link}
-            >
+              to={detail.link}>
               <i className={detail.icon}></i>&nbsp;{detail.data}
             </Link>
           ))}
         </section>
-        
+
         <section>
           <div className="left-bottom-buttons fs-5 font-weight-bolder m-2">
             <i className="fa fa-cog fa-lg me-2"></i> Settings
           </div>
           <div
             className="left-bottom-buttons fs-5 font-weight-bolder m-2"
-            onClick={logout}
-          >
+            onClick={logout}>
             <i className="fa fa-sign-out fa-lg me-2"></i> Logout
           </div>
         </section>
